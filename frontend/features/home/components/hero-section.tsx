@@ -221,11 +221,17 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
           >
             <Link
               href={`/${locale}/services`}
-              className="group inline-flex w-full items-center justify-center gap-3 bg-primary px-5 py-3 text-xs font-bold whitespace-nowrap text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_38px_-14px_rgba(250,204,21,0.75)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7 md:text-sm"
+              className="group relative isolate inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-primary px-5 py-3 text-xs font-bold whitespace-nowrap text-primary-foreground transition-shadow duration-500 hover:shadow-[0_12px_38px_-14px_rgba(250,204,21,0.75)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7 md:text-sm"
             >
-              <span className="sm:hidden">Our Services</span>
-              <span className="hidden sm:inline">{hero.primary}</span>
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 z-0 -translate-x-full -translate-y-full bg-foreground transition-transform duration-400 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+              />
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-background">
+                <span className="sm:hidden">Our Services</span>
+                <span className="hidden sm:inline">{hero.primary}</span>
+              </span>
+              <ArrowRight className="relative z-10 size-4 transition-all duration-500 group-hover:translate-x-1 group-hover:text-background" />
             </Link>
             <a
               href={siteConfig.calUrl}
@@ -269,11 +275,10 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
                     role="tab"
                     aria-selected={selected}
                     onClick={() => setActive(i)}
-                    className={`relative flex shrink-0 items-center gap-2 overflow-hidden px-3.5 py-3 text-[13px] font-semibold transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary sm:px-5 sm:py-3.5 sm:text-sm ${
-                      selected
+                    className={`relative flex shrink-0 items-center gap-2 overflow-hidden px-3.5 py-3 text-[13px] font-semibold transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary sm:px-5 sm:py-3.5 sm:text-sm ${selected
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     <Icon
                       className={`size-4 ${selected ? "text-primary" : ""}`}

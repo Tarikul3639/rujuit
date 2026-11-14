@@ -5,7 +5,7 @@ export const homeDictionary = {
     title: "আপনার পরবর্তী পদক্ষেপের জন্য সঠিক দিকটি খুঁজুন।",
     description: "প্রতিটি বিষয়ের বিস্তারিত জানতে সংশ্লিষ্ট পেজে যান।",
     servicesDescription:
-      "ওয়েব, ক্লাউড, API, MCP এবং AI—আমাদের সম্পূর্ণ engineering capabilities দেখুন।",
+      "Web, Cloud, API, MCP এবং AI—আমাদের সম্পূর্ণ engineering capabilities দেখুন।",
     servicesLink: "সার্ভিসগুলো দেখুন",
     workDescription: "বাস্তব প্রোডাক্ট ও engineering work-এর নির্বাচিত সংগ্রহ দেখুন।",
     workLink: "প্রজেক্ট দেখুন",

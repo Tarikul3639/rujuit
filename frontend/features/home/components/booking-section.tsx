@@ -49,10 +49,11 @@ export function BookingSection({ dictionary }: { dictionary: Dictionary }) {
               href={siteConfig.calUrl}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex min-h-14 w-full items-center justify-center gap-4 border border-black bg-black px-6 py-4 text-sm font-bold text-primary transition-colors hover:bg-transparent hover:text-black sm:w-auto"
+              className="group relative isolate inline-flex min-h-14 w-full items-center justify-center gap-4 overflow-hidden border border-black bg-black px-6 py-4 text-sm font-bold text-primary sm:w-auto"
             >
-              {dictionary.contact.book}
-              <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <span aria-hidden="true" className="absolute inset-0 -z-10 -translate-x-full bg-primary transition-transform duration-500 ease-in-out group-hover:translate-x-0" />
+              <span className="transition-colors duration-300 group-hover:text-black">{dictionary.contact.book}</span>
+              <ArrowUpRight className="size-5 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-black" />
             </a>
           </Reveal>
         </div>
