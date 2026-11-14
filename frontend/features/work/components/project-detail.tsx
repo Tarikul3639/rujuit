@@ -55,31 +55,6 @@ export function ProjectDetail({
                   {translated.summary}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3 lg:justify-end">
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex h-12 items-center gap-3 bg-primary px-5 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-1"
-                  >
-                    {copy.index.live}
-                    <ExternalLink className="size-4" />
-                  </a>
-                )}
-                {project.repos.map((repo) => (
-                  <a
-                    key={repo.href}
-                    href={repo.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex h-12 items-center gap-2 border border-border px-4 text-sm font-semibold transition-colors hover:border-primary"
-                  >
-                    {repo.label}
-                    <ArrowUpRight className="size-4 text-primary" />
-                  </a>
-                ))}
-              </div>
             </div>
             <div className="relative mt-16 aspect-[16/9] overflow-hidden border border-border bg-muted">
               {project.image ? (
@@ -171,7 +146,7 @@ export function ProjectDetail({
         </section>
         <section className="border-y border-border bg-muted/20 py-16 sm:py-20">
           <div className="mx-auto flex max-w-[1440px] flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
-            <div>
+            <div className="min-w-0">
               <p className="font-code text-[10px] tracking-[0.2em] text-primary">
                 RUJUIT / NEXT BUILD
               </p>
@@ -181,6 +156,31 @@ export function ProjectDetail({
               <p className="mt-3 text-sm text-muted-foreground">
                 {copy.index.discussText}
               </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-11 items-center gap-3 bg-primary px-4 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-1"
+                  >
+                    {copy.index.live}
+                    <ExternalLink className="size-4" />
+                  </a>
+                )}
+                {project.repos.map((repo) => (
+                  <a
+                    key={repo.href}
+                    href={repo.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-11 items-center gap-2 border border-border px-4 text-sm font-semibold transition-colors hover:border-primary"
+                  >
+                    {repo.label}
+                    <ArrowUpRight className="size-4 text-primary" />
+                  </a>
+                ))}
+              </div>
             </div>
             <Link
               href={`/${locale}#contact`}
@@ -205,6 +205,9 @@ export function ProjectDetail({
             <span className="font-display mt-4 block text-lg font-bold sm:text-2xl">
               {previous.title}
             </span>
+            <span className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm">
+              {copy.projects[previous.slug as keyof typeof copy.projects].summary}
+            </span>
           </Link>
           <Link
             href={`/${locale}/work/${next.slug}`}
@@ -215,6 +218,9 @@ export function ProjectDetail({
             </span>
             <span className="font-display mt-4 block text-lg font-bold sm:text-2xl">
               {next.title}
+            </span>
+            <span className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm">
+              {copy.projects[next.slug as keyof typeof copy.projects].summary}
             </span>
           </Link>
         </nav>
