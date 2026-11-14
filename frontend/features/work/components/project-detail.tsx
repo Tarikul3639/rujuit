@@ -55,7 +55,7 @@ export function ProjectDetail({ project, locale, dictionary }: { project: Portfo
         <section className="border-y border-border bg-muted/20 py-16 sm:py-20">
           <div className="mx-auto flex max-w-[1440px] flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
             <div><p className="font-code text-[10px] tracking-[0.2em] text-primary">RUJOOIT / NEXT BUILD</p><h2 className="font-display mt-4 text-3xl font-bold tracking-[-0.05em] sm:text-4xl">{copy.index.discuss}</h2><p className="mt-3 text-sm text-muted-foreground">{copy.index.discussText}</p></div>
-            <Link href={`/${locale}/contact`} className="inline-flex h-12 shrink-0 items-center justify-center gap-3 border border-primary px-5 text-sm font-bold transition-colors hover:bg-primary hover:text-primary-foreground">{copy.index.contact}<ArrowUpRight className="size-4" /></Link>
+            <Link href={`/${locale}#contact`} className="inline-flex h-12 shrink-0 items-center justify-center gap-3 border border-primary px-5 text-sm font-bold transition-colors hover:bg-primary hover:text-primary-foreground">{copy.index.contact}<ArrowUpRight className="size-4" /></Link>
           </div>
         </section>
         <nav aria-label="Project navigation" className="mx-auto grid max-w-[1440px] grid-cols-2 gap-4 px-5 py-12 sm:px-8 lg:px-12">
