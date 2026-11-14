@@ -158,6 +158,12 @@ export const homeDictionary = {
     calloutDescription:
       "We help turn complex requirements into dependable digital products.",
   },
+  faq: {
+    eyebrow: "COMMON QUESTIONS",
+    title: "A few things worth knowing.",
+    description: "Clear answers about our capabilities, the technologies we work with and how to start a conversation.",
+    contactLink: "Still have a question? Talk to us",
+  },
   contact: {
     eyebrow: "LET'S BUILD WHAT'S NEXT",
     title: "Have a challenge worth solving?",
