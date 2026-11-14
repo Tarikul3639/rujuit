@@ -6,14 +6,11 @@ import { ContactForm } from "@/features/home/components/contact-form"
 import { LocaleDocument } from "@/features/home/components/locale-document"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
-
-const copy = {
-  en: { eyebrow: "CONTACT / START A CONVERSATION", title: "Tell us what you're looking to build.", intro: "Share the challenge, the idea or the workflow you want to improve. We can help you work out a sensible technical direction.", form: "Project inquiry", email: "Email", booking: "Book a discovery call", bookingText: "Prefer to talk it through? Choose a time for an introductory conversation.", response: "A useful first conversation starts with context, not a sales script.", note: "This form currently validates in your browser only. It does not send or store submissions." },
-  bn: { eyebrow: "যোগাযোগ / আলোচনা শুরু করুন", title: "আপনি কী তৈরি করতে চান, আমাদের জানান।", intro: "আপনার challenge, idea অথবা যে workflow উন্নত করতে চান তা জানান। সঠিক technical direction খুঁজে পেতে আমরা সাহায্য করতে পারি।", form: "প্রজেক্ট ইনকোয়ারি", email: "ইমেইল", booking: "একটি discovery call বুক করুন", bookingText: "সরাসরি আলোচনা করতে চান? পরিচিতিমূলক কথোপকথনের জন্য সময় বেছে নিন।", response: "ভালো প্রথম আলোচনা শুরু হয় প্রেক্ষাপট দিয়ে, sales script দিয়ে নয়।", note: "এই form আপাতত শুধু browser-এ validation করে। কোনো তথ্য পাঠায় বা সংরক্ষণ করে না।" }
-} as const
+import { contactCopy as enContact } from "@/messages/en/contact"
+import { contactCopy as bnContact } from "@/messages/bn/contact"
 
 export function ContactPage({ locale, dictionary }: { locale: Locale; dictionary: Dictionary }) {
-  const text = copy[locale]
+  const text = locale === "en" ? enContact : bnContact
   return (
     <>
       <LocaleDocument locale={locale} />
