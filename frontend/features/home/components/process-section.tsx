@@ -1,5 +1,6 @@
 "use client"
 
+import { EncryptedText } from "@/components/ui/encrypted-text"
 import { Reveal } from "@/features/home/components/reveal"
 import type { Dictionary } from "@/lib/i18n"
 
@@ -8,11 +9,11 @@ export function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
   const steps = dictionary.process.steps
 
   return (
-    <section className="border-y border-border bg-muted/20 py-20 sm:py-24">
+    <section className="section-atmosphere border-y border-border bg-muted/20 py-20 sm:py-24">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <Reveal>
           <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
-            02 / {dictionary.process.eyebrow}
+            02 / <EncryptedText text={dictionary.process.eyebrow} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
           </p>
         </Reveal>
         <Reveal delay={0.06}>

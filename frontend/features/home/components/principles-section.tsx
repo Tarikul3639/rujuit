@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { ArrowUpRight, Code2, Layers3, Network } from "lucide-react"
 
+import { EncryptedText } from "@/components/ui/encrypted-text"
 import { Reveal } from "@/features/home/components/reveal"
 import type { HomePageProps } from "@/features/home/components/home-page.types"
 
@@ -11,12 +12,12 @@ export function PrinciplesSection({ dictionary, locale }: HomePageProps) {
   const icons = [Code2, Layers3, Network]
 
   return (
-    <section className="py-20 sm:py-24">
+    <section className="section-atmosphere py-20 sm:py-24">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-12">
         <div>
           <Reveal>
             <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
-              03 / {dictionary.principles.eyebrow}
+              03 / <EncryptedText text={dictionary.principles.eyebrow} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
             </p>
           </Reveal>
           <Reveal delay={0.06}>

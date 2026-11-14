@@ -2,6 +2,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react"
 
+import { EncryptedText } from "@/components/ui/encrypted-text"
+import { TypewriterEffect } from "@/components/ui/typewriter-effect"
+
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { LocaleDocument } from "@/features/home/components/locale-document"
@@ -34,9 +37,9 @@ export function ProjectDetail({
         }
       >
         <SiteHeader locale={locale} dictionary={dictionary} />
-        <section className="relative overflow-hidden border-b border-border py-20 sm:py-28">
+        <section className="section-atmosphere relative overflow-hidden border-b border-border py-20 sm:py-28">
           <div className="site-grid absolute inset-0 opacity-45" />
-          <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="relative mx-auto max-w-360 px-5 sm:px-8 lg:px-12">
             <Link
               href={`/${locale}/work`}
               className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground transition-colors hover:text-primary"
@@ -46,17 +49,23 @@ export function ProjectDetail({
             <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.42fr] lg:items-end">
               <div>
                 <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-                  {project.category.toUpperCase()} / {project.year}
+                  <EncryptedText text={`${project.category.toUpperCase()} / ${project.year}`} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
                 </p>
                 <h1 className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl">
-                  {project.title}
+                  {locale === "en" ? (
+                    <TypewriterEffect
+                      words={project.title.split(" ").map((word) => ({ text: word, className: "text-foreground" }))}
+                      className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+                      cursorClassName="bg-primary"
+                    />
+                  ) : project.title}
                 </h1>
                 <p className="mt-7 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
                   {translated.summary}
                 </p>
               </div>
             </div>
-            <div className="relative mt-16 aspect-[16/9] overflow-hidden border border-border bg-muted">
+            <div className="relative mt-16 aspect-video overflow-hidden border border-border bg-muted">
               {project.image ? (
                 <Image
                   src={project.image}
@@ -78,7 +87,7 @@ export function ProjectDetail({
             </div>
           </div>
         </section>
-        <section className="mx-auto grid max-w-[1440px] gap-16 px-5 py-20 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:px-12 lg:py-28">
+        <section className="section-atmosphere mx-auto grid max-w-360 gap-16 px-5 py-20 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:px-12 lg:py-28">
           <aside className="space-y-9">
             <div className="border-t border-border pt-5">
               <p className="font-code text-[10px] tracking-[0.2em] text-primary">
@@ -145,7 +154,7 @@ export function ProjectDetail({
           </div>
         </section>
         <section className="border-y border-border bg-muted/20 py-16 sm:py-20">
-          <div className="mx-auto flex max-w-[1440px] flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+          <div className="mx-auto flex max-w-360 flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
             <div className="min-w-0">
               <p className="font-code text-[10px] tracking-[0.2em] text-primary">
                 RUJUIT / NEXT BUILD
@@ -193,7 +202,7 @@ export function ProjectDetail({
         </section>
         <nav
           aria-label="Project navigation"
-          className="mx-auto grid max-w-[1440px] grid-cols-2 gap-4 px-5 py-12 sm:px-8 lg:px-12"
+          className="section-atmosphere mx-auto grid max-w-360 grid-cols-2 gap-4 px-5 py-12 sm:px-8 lg:px-12"
         >
           <Link
             href={`/${locale}/work/${previous.slug}`}

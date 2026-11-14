@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Braces, Cloud, Code2, Layers3, Network, Workflow } from "lucide-react"
 
+import { EncryptedText } from "@/components/ui/encrypted-text"
 import { Reveal } from "@/features/home/components/reveal"
 import type { HomePageProps } from "@/features/home/components/home-page.types"
 
@@ -14,13 +15,13 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
   const isBangla = locale === "bn"
 
   return (
-    <section id="explore" className="scroll-mt-24 py-16 sm:py-24 lg:py-28">
+    <section id="explore" className="section-atmosphere scroll-mt-24 py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="mb-9 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <Reveal>
               <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
-                01 / {dictionary.explore.eyebrow}
+                01 / <EncryptedText text={dictionary.explore.eyebrow} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
               </p>
             </Reveal>
             <Reveal delay={0.06}>

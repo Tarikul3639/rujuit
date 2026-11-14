@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowDown, ArrowRight, ArrowUpRight, Zap } from "lucide-react"
 import { motion } from "motion/react"
 
+import { EncryptedText } from "@/components/ui/encrypted-text"
 import { FlipWords } from "@/components/ui/flip-words"
 import { Spotlight } from "@/components/ui/spotlight"
 import { Reveal } from "@/features/home/components/reveal"
@@ -26,7 +27,7 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
             <div className="mb-6 inline-flex max-w-full items-center gap-3 border border-primary/30 bg-primary/5 px-3 py-2">
               <span className="size-2 shrink-0 animate-pulse bg-primary" />
               <span className="font-code text-[9px] font-semibold tracking-[0.13em] text-primary sm:text-[10px] sm:tracking-[0.18em]">
-                {hero.eyebrow}
+                <EncryptedText text={hero.eyebrow} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
               </span>
             </div>
           </Reveal>
