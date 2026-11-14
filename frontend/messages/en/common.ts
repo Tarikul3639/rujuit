@@ -7,7 +7,7 @@ export const commonDictionary = {
     },
   nav: {
       services: "Services",
-      approach: "Approach",
+      approach: "About",
       work: "Selected work",
       contact: "Contact",
       book: "Book a call",

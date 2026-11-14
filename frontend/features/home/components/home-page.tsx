@@ -27,6 +27,7 @@ import { ContactForm } from "@/features/home/components/contact-form"
 import { FAQSection } from "@/features/home/components/faq-section"
 import { LocaleDocument } from "@/features/home/components/locale-document"
 import { FeaturedWork } from "@/features/work/components/featured-work"
+import { serviceSlugs } from "@/features/services/data/services"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
 
@@ -53,7 +54,7 @@ function Reveal({
     <motion.div
       initial={reduceMotion ? false : { opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: false, amount: 0.15 }}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
@@ -119,7 +120,7 @@ function HeroSection({ dictionary, locale }: HomePageProps) {
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
             <Link
-              href="#services"
+              href={`/${locale}/services`}
               className="group inline-flex h-12 items-center justify-center gap-3 rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_35px_-12px_rgba(250,204,21,0.7)]"
             >
               {hero.primary}
@@ -206,7 +207,7 @@ function HeroSection({ dictionary, locale }: HomePageProps) {
 }
 
 // Each service card explains the actual work instead of relying on vague marketing labels.
-function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
+function ServicesSection({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
   return (
     <section id="services" className="scroll-mt-24 py-24 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
@@ -231,6 +232,7 @@ function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
             const Icon = serviceIcons[index]
             return (
               <Reveal key={service.number} delay={index * 0.045}>
+                <Link href={`/${locale}/services/${serviceSlugs[index]}`} className="block h-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                 <article className="group edge-accent relative flex h-full min-h-[280px] flex-col border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-primary/[0.025] sm:p-7">
                   <div className="flex items-start justify-between">
                     <div className="flex size-12 items-center justify-center border border-primary/30 bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
@@ -257,6 +259,7 @@ function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
                     ))}
                   </div>
                 </article>
+                </Link>
               </Reveal>
             )
           })}
@@ -533,7 +536,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
       >
         <SiteHeader locale={locale} dictionary={dictionary} />
         <HeroSection locale={locale} dictionary={dictionary} />
-        <ServicesSection dictionary={dictionary} />
+        <ServicesSection dictionary={dictionary} locale={locale} />
         <FeaturedWork locale={locale} />
         <ApproachSection dictionary={dictionary} />
         <ProcessSection dictionary={dictionary} />

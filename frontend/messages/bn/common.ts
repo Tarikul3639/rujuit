@@ -7,7 +7,7 @@ export const commonDictionary = {
     },
   nav: {
       services: "সার্ভিস",
-      approach: "আমাদের পদ্ধতি",
+      approach: "আমাদের সম্পর্কে",
       work: "নির্বাচিত কাজ",
       contact: "যোগাযোগ",
       book: "কল বুক করুন",
