@@ -1,10 +1,11 @@
+import { env } from "@/config/env"
+
 export const siteConfig = {
   name: "RujooIT",
   tagline: "Engineering Digital Possibilities.",
-  // Set NEXT_PUBLIC_CAL_URL in .env.local when the official booking link is ready.
-  calUrl: process.env.NEXT_PUBLIC_CAL_URL || "https://cal.com/",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "",
+  url: env.NEXT_PUBLIC_SITE_URL,
+  calUrl: env.NEXT_PUBLIC_CAL_URL,
+  email: env.NEXT_PUBLIC_CONTACT_EMAIL,
 }
 
 export const serviceIds = [

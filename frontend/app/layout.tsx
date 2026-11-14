@@ -54,7 +54,9 @@ const jetBrainsMono = localFont({
   display: "swap",
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+import { env } from "@/config/env"
+
+const siteUrl = env.NEXT_PUBLIC_SITE_URL
 
 export const metadata: Metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
