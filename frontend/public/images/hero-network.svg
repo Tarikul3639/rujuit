@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="120" y1="110" x2="590" y2="610" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1A6"/>
+      <stop offset=".42" stop-color="#FACC15"/>
+      <stop offset="1" stop-color="#B77905"/>
+    </linearGradient>
+    <linearGradient id="line" x1="160" y1="180" x2="570" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FACC15" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#FACC15" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="core" cx="0" cy="0" r="1" gradientTransform="matrix(0 220 -220 0 360 360)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FACC15" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#FACC15" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="0" y="0" width="720" height="720" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <circle cx="360" cy="360" r="310" fill="url(#core)"/>
+  <circle cx="360" cy="360" r="262" stroke="#FACC15" stroke-opacity=".12" stroke-dasharray="3 10"/>
+  <circle cx="360" cy="360" r="206" stroke="#FACC15" stroke-opacity=".22"/>
+  <circle cx="360" cy="360" r="148" stroke="#FACC15" stroke-opacity=".16" stroke-dasharray="2 8"/>
+  <path d="M110 360h500M360 110v500M183 183l354 354M537 183 183 537" stroke="#FACC15" stroke-opacity=".1"/>
+  <path d="m164 244 115-72 164 31 105 120-42 177-157 73-165-70-58-142 38-117Z" stroke="url(#line)" stroke-width="2"/>
+  <path d="m279 172 81 188 83-157M279 172l-7 290 171 69M443 203l105 120-190 37M548 323l-42 177-148-140M272 462l88-102 83 193" stroke="url(#line)" stroke-width="1.5"/>
+  <path d="m279 172 81 188 83-157M279 172l-7 290 171 69M443 203l105 120-190 37M548 323l-42 177-148-140M272 462l88-102 83 193" stroke="#FACC15" stroke-opacity=".42" stroke-width="7" filter="url(#glow)"/>
+  <path d="M360 250 465 310v120l-105 60-105-60V310l105-60Z" fill="#0A0A0A" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M360 282 437 326v88l-77 44-77-44v-88l77-44Z" fill="#111" stroke="#FACC15" stroke-opacity=".35"/>
+  <path d="M321 326h78M321 350h78M321 374h51" stroke="#FACC15" stroke-width="5" stroke-linecap="square"/>
+  <circle cx="279" cy="172" r="11" fill="#FACC15"/><circle cx="443" cy="203" r="11" fill="#FACC15"/>
+  <circle cx="548" cy="323" r="11" fill="#FACC15"/><circle cx="506" cy="500" r="11" fill="#FACC15"/>
+  <circle cx="443" cy="531" r="11" fill="#FACC15"/><circle cx="272" cy="462" r="11" fill="#FACC15"/>
+  <circle cx="214" cy="320" r="11" fill="#FACC15"/>
+  <circle cx="279" cy="172" r="22" stroke="#FACC15" stroke-opacity=".28"/><circle cx="548" cy="323" r="22" stroke="#FACC15" stroke-opacity=".28"/>
+  <path d="M360 48v26M360 646v26M48 360h26M646 360h26" stroke="#FACC15" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M105 105h42M105 105v42M615 105h-42M615 105v42M105 615h42M105 615v-42M615 615h-42M615 615v-42" stroke="#FACC15" stroke-opacity=".3" stroke-width="2"/>
+</svg>
