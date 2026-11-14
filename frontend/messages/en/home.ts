@@ -4,14 +4,18 @@ export const homeDictionary = {
     eyebrow: "EXPLORE RUJUIT",
     title: "Find the right direction for your next move.",
     description: "Explore each area in depth on its dedicated page.",
-    servicesDescription: "Web, cloud, APIs, MCP and AI—explore the full range of our engineering capabilities.",
+    servicesDescription:
+      "Web, cloud, APIs, MCP and AI—explore the full range of our engineering capabilities.",
     servicesLink: "Explore our services",
-    workDescription: "Explore selected product builds and hands-on engineering work.",
+    workDescription:
+      "Explore selected product builds and hands-on engineering work.",
     workLink: "View the work",
-    aboutDescription: "Learn about our principles, engineering mindset and how we collaborate.",
+    aboutDescription:
+      "Learn about our principles, engineering mindset and how we collaborate.",
     aboutLink: "Meet the team",
     aboutCta: "Learn more about us",
-    contactDescription: "Start a conversation about your goals and technical challenges.",
+    contactDescription:
+      "Start a conversation about your goals and technical challenges.",
     workEyebrow: "SELECTED BUILDS",
     studioEyebrow: "THE STUDIO",
     buildEyebrow: "LET'S BUILD",
@@ -161,7 +165,8 @@ export const homeDictionary = {
   faq: {
     eyebrow: "COMMON QUESTIONS",
     title: "A few things worth knowing.",
-    description: "Clear answers about our capabilities, the technologies we work with and how to start a conversation.",
+    description:
+      "Clear answers about our capabilities, the technologies we work with and how to start a conversation.",
     contactLink: "Still have a question? Talk to us",
   },
   contact: {

@@ -59,7 +59,15 @@ export const projects: PortfolioProject[] = [
       "A self-hosted Google Drive MCP server that gives AI clients secure, permission-controlled access to Drive.",
     description:
       "Google Drive MCP connects MCP-compatible AI clients to a user's Google Drive through a remote Streamable HTTP endpoint. It combines a Next.js dashboard with a NestJS API and OAuth authorization server, allowing users to connect Google, review client consent, and control each client's access to individual tools. The server exposes 54 MCP tools: 37 Google Drive management tools, 11 Google Workspace tools, 5 Office document-processing tools, and a health-check tool.",
-    stack: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Redis", "MCP"],
+    stack: [
+      "Next.js",
+      "NestJS",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "MCP",
+    ],
     role: "Full-stack development",
     highlights: [
       "Remote Streamable HTTP MCP endpoint with OAuth metadata and Dynamic Client Registration",

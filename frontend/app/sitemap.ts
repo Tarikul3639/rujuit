@@ -9,11 +9,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
   const coreRoutes = ["en", "bn"].flatMap((locale) => [
-    { url: `${baseUrl}/${locale}`, lastModified, changeFrequency: "monthly" as const, priority: locale === "en" ? 1 : 0.9 },
-    { url: `${baseUrl}/${locale}/services`, lastModified, changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${baseUrl}/${locale}/about`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${baseUrl}/${locale}/contact`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${baseUrl}/${locale}/work`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
+    {
+      url: `${baseUrl}/${locale}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: locale === "en" ? 1 : 0.9,
+    },
+    {
+      url: `${baseUrl}/${locale}/services`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/${locale}/about`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/${locale}/contact`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/${locale}/work`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ])
 
   const projectRoutes = ["en", "bn"].flatMap((locale) =>
@@ -22,15 +47,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    })),
+    }))
   )
   const serviceRoutes = ["en", "bn"].flatMap((locale) =>
-    ["web-development", "cloud-engineering", "api-integration", "mcp-development", "ai-automation", "custom-software"].map((slug) => ({
+    [
+      "web-development",
+      "cloud-engineering",
+      "api-integration",
+      "mcp-development",
+      "ai-automation",
+      "custom-software",
+    ].map((slug) => ({
       url: `${baseUrl}/${locale}/services/${slug}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.75,
-    })),
+    }))
   )
 
   return [...coreRoutes, ...projectRoutes, ...serviceRoutes]

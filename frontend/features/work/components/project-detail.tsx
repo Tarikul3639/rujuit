@@ -1,6 +1,10 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react"
+import { motion } from "motion/react"
+import { useReveal } from "@/lib/use-reveal"
 
 import { EncryptedText } from "@/components/ui/encrypted-text"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
@@ -27,6 +31,8 @@ export function ProjectDetail({
   const next = projects[(index + 1) % projects.length]
   const translated = copy.projects[project.slug as keyof typeof copy.projects]
 
+  const reveal = useReveal()
+
   return (
     <>
       <LocaleDocument locale={locale} />
@@ -39,7 +45,7 @@ export function ProjectDetail({
         <SiteHeader locale={locale} dictionary={dictionary} />
         <section className="section-atmosphere relative overflow-hidden border-b border-border py-20 sm:py-28">
           <div className="site-grid absolute inset-0 opacity-45" />
-          <div className="relative mx-auto max-w-360 px-5 sm:px-8 lg:px-12">
+          <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <Link
               href={`/${locale}/work`}
               className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground transition-colors hover:text-primary"
@@ -48,21 +54,40 @@ export function ProjectDetail({
             </Link>
             <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.42fr] lg:items-end">
               <div>
-                <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-                  <EncryptedText text={`${project.category.toUpperCase()} / ${project.year}`} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
-                </p>
-                <h1 className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl">
+                <motion.p
+                  {...reveal()}
+                  className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary"
+                >
+                  <EncryptedText
+                    text={`${project.category.toUpperCase()} / ${project.year}`}
+                    className="inline"
+                    revealedClassName="text-primary"
+                    encryptedClassName="text-primary/60"
+                  />
+                </motion.p>
+                <motion.h1
+                  {...reveal()}
+                  className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+                >
                   {locale === "en" ? (
                     <TypewriterEffect
-                      words={project.title.split(" ").map((word) => ({ text: word, className: "text-foreground" }))}
+                      words={project.title.split(" ").map((word) => ({
+                        text: word,
+                        className: "text-foreground",
+                      }))}
                       className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
                       cursorClassName="bg-primary"
                     />
-                  ) : project.title}
-                </h1>
-                <p className="mt-7 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
+                  ) : (
+                    project.title
+                  )}
+                </motion.h1>
+                <motion.p
+                  {...reveal()}
+                  className="mt-7 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg"
+                >
                   {translated.summary}
-                </p>
+                </motion.p>
               </div>
             </div>
             <div className="relative mt-16 aspect-video overflow-hidden border border-border bg-muted">
@@ -87,66 +112,105 @@ export function ProjectDetail({
             </div>
           </div>
         </section>
-        <section className="section-atmosphere mx-auto grid max-w-360 gap-16 px-5 py-20 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:px-12 lg:py-28">
+        <section className="section-atmosphere mx-auto grid max-w-7xl gap-16 px-5 py-20 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:px-12 lg:py-28">
           <aside className="space-y-9">
             <div className="border-t border-border pt-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 {copy.index.role}
-              </p>
-              <p className="mt-3 text-sm font-semibold">{project.role}</p>
+              </motion.p>
+              <motion.p {...reveal()} className="mt-3 text-sm font-semibold">
+                {project.role}
+              </motion.p>
             </div>
             <div className="border-t border-border pt-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 {copy.index.year}
-              </p>
-              <p className="mt-3 text-sm font-semibold">{project.year}</p>
+              </motion.p>
+              <motion.p {...reveal()} className="mt-3 text-sm font-semibold">
+                {project.year}
+              </motion.p>
             </div>
             <div className="border-t border-border pt-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 {copy.index.category}
-              </p>
-              <p className="mt-3 text-sm font-semibold">{project.category}</p>
+              </motion.p>
+              <motion.p {...reveal()} className="mt-3 text-sm font-semibold">
+                {project.category}
+              </motion.p>
             </div>
             <div className="border-t border-border pt-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 {copy.index.stack}
-              </p>
+              </motion.p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.stack.map((tag) => (
-                  <span
+                  <motion.span
+                    {...reveal()}
                     key={tag}
                     className="font-code border border-border px-2.5 py-1.5 text-[10px] text-muted-foreground"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
           </aside>
           <div>
-            <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
+            <motion.p
+              {...reveal()}
+              className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary"
+            >
               01 / {copy.index.overview}
-            </p>
-            <h2 className="font-display mt-5 text-3xl leading-tight font-bold tracking-tighter sm:text-4xl">
+            </motion.p>
+            <motion.h2
+              {...reveal()}
+              className="font-display mt-5 text-3xl leading-tight font-bold tracking-tighter sm:text-4xl"
+            >
               {project.title}
-            </h2>
-            <p className="mt-6 text-base leading-8 text-muted-foreground">
+            </motion.h2>
+            <motion.p
+              {...reveal()}
+              className="mt-6 text-base leading-8 text-muted-foreground"
+            >
               {translated.description}
-            </p>
+            </motion.p>
             <div className="mt-16 border-t border-border pt-8">
-              <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary"
+              >
                 02 / {copy.index.highlights}
-              </p>
+              </motion.p>
               <div className="mt-7 space-y-0">
                 {translated.highlights.map((highlight, itemIndex) => (
                   <div
                     key={highlight}
                     className="flex gap-5 border-b border-border py-5"
                   >
-                    <span className="font-code text-xs text-primary">
+                    <motion.span
+                      {...reveal()}
+                      className="font-code text-xs text-primary"
+                    >
                       0{itemIndex + 1}
-                    </span>
-                    <p className="max-w-2xl text-sm leading-7">{highlight}</p>
+                    </motion.span>
+                    <motion.p
+                      {...reveal()}
+                      className="max-w-2xl text-sm leading-7"
+                    >
+                      {highlight}
+                    </motion.p>
                   </div>
                 ))}
               </div>
@@ -154,17 +218,26 @@ export function ProjectDetail({
           </div>
         </section>
         <section className="border-y border-border bg-muted/20 py-16 sm:py-20">
-          <div className="mx-auto flex max-w-360 flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+          <div className="mx-auto flex max-w-7xl flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
             <div className="min-w-0">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 RUJUIT / NEXT BUILD
-              </p>
-              <h2 className="font-display mt-4 text-3xl font-bold tracking-tighter sm:text-4xl">
+              </motion.p>
+              <motion.h2
+                {...reveal()}
+                className="font-display mt-4 text-3xl font-bold tracking-tighter sm:text-4xl"
+              >
                 {copy.index.discuss}
-              </h2>
-              <p className="mt-3 text-sm text-muted-foreground">
+              </motion.h2>
+              <motion.p
+                {...reveal()}
+                className="mt-3 text-sm text-muted-foreground"
+              >
                 {copy.index.discussText}
-              </p>
+              </motion.p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {project.live && (
                   <a
@@ -202,35 +275,56 @@ export function ProjectDetail({
         </section>
         <nav
           aria-label="Project navigation"
-          className="section-atmosphere mx-auto grid max-w-360 grid-cols-2 gap-4 px-5 py-12 sm:px-8 lg:px-12"
+          className="section-atmosphere mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-12 sm:px-8 lg:px-12"
         >
           <Link
             href={`/${locale}/work/${previous.slug}`}
             className="group border border-border p-5 transition-colors hover:border-primary sm:p-7"
           >
-            <span className="font-code flex items-center gap-2 text-[9px] tracking-widest text-muted-foreground">
+            <motion.span
+              {...reveal()}
+              className="font-code flex items-center gap-2 text-[9px] tracking-widest text-muted-foreground"
+            >
               <ArrowLeft className="size-3" /> {copy.index.previous}
-            </span>
-            <span className="font-display mt-4 block text-lg font-bold sm:text-2xl">
+            </motion.span>
+            <motion.span
+              {...reveal()}
+              className="font-display mt-4 block text-lg font-bold sm:text-2xl"
+            >
               {previous.title}
-            </span>
-            <span className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm">
-              {copy.projects[previous.slug as keyof typeof copy.projects].summary}
-            </span>
+            </motion.span>
+            <motion.span
+              {...reveal()}
+              className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm"
+            >
+              {
+                copy.projects[previous.slug as keyof typeof copy.projects]
+                  .summary
+              }
+            </motion.span>
           </Link>
           <Link
             href={`/${locale}/work/${next.slug}`}
             className="group border border-border p-5 text-right transition-colors hover:border-primary sm:p-7"
           >
-            <span className="font-code flex items-center justify-end gap-2 text-[9px] tracking-widest text-muted-foreground">
+            <motion.span
+              {...reveal()}
+              className="font-code flex items-center justify-end gap-2 text-[9px] tracking-widest text-muted-foreground"
+            >
               {copy.index.next} <ArrowRight className="size-3" />
-            </span>
-            <span className="font-display mt-4 block text-lg font-bold sm:text-2xl">
+            </motion.span>
+            <motion.span
+              {...reveal()}
+              className="font-display mt-4 block text-lg font-bold sm:text-2xl"
+            >
               {next.title}
-            </span>
-            <span className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm">
+            </motion.span>
+            <motion.span
+              {...reveal()}
+              className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm"
+            >
               {copy.projects[next.slug as keyof typeof copy.projects].summary}
-            </span>
+            </motion.span>
           </Link>
         </nav>
         <SiteFooter locale={locale} dictionary={dictionary} />

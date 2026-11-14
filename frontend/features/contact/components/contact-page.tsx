@@ -1,9 +1,13 @@
+"use client"
+
 import {
   ArrowUpRight,
   CalendarDays,
   Mail,
   MessageSquareText,
 } from "lucide-react"
+import { motion } from "motion/react"
+import { useReveal } from "@/lib/use-reveal"
 
 import { EncryptedText } from "@/components/ui/encrypted-text"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
@@ -24,6 +28,8 @@ export function ContactPage({
   dictionary: Dictionary
 }) {
   const text = locale === "en" ? enContact : bnContact
+  const reveal = useReveal()
+
   return (
     <>
       <LocaleDocument locale={locale} />
@@ -37,31 +43,58 @@ export function ContactPage({
         <SiteHeader locale={locale} dictionary={dictionary} />
         <section className="section-atmosphere relative overflow-hidden border-b border-border py-24 sm:py-32">
           <div className="site-grid absolute inset-0 opacity-50" />
-          <div className="relative mx-auto max-w-360 px-5 sm:px-8 lg:px-12">
-            <p className="font-code text-[10px] tracking-[0.22em] text-primary">
-              <EncryptedText text={text.eyebrow} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
-            </p>
-            <h1 className="font-display mt-6 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl">
+          <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+            <motion.p
+              {...reveal()}
+              className="font-code text-[10px] tracking-[0.22em] text-primary"
+            >
+              <EncryptedText
+                text={text.eyebrow}
+                className="inline"
+                revealedClassName="text-primary"
+                encryptedClassName="text-primary/60"
+              />
+            </motion.p>
+            <motion.h1
+              {...reveal()}
+              className="font-display mt-6 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+            >
               {locale === "en" ? (
                 <TypewriterEffect
-                  words={text.title.split(" ").map((word) => ({ text: word, className: "text-foreground" }))}
+                  words={text.title.split(" ").map((word) => ({
+                    text: word,
+                    className: "text-foreground",
+                  }))}
                   className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
                   cursorClassName="bg-primary"
                 />
-              ) : text.title}
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">
+              ) : (
+                text.title
+              )}
+            </motion.h1>
+            <motion.p
+              {...reveal()}
+              className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground"
+            >
               {text.intro}
-            </p>
+            </motion.p>
           </div>
         </section>
-        <section className="section-atmosphere mx-auto grid max-w-360 gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1.1fr_0.65fr] lg:px-12 lg:py-28">
+        <section className="section-atmosphere mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_0.8fr] lg:px-12 lg:py-28">
           <div className="border border-border bg-card p-5 sm:p-9">
             <div className="mb-8 border-b border-border pb-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 01 / {text.form}
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">{text.note}</p>
+              </motion.p>
+              <motion.p
+                {...reveal()}
+                className="mt-3 text-sm text-muted-foreground"
+              >
+                {text.note}
+              </motion.p>
             </div>
             <ContactForm dictionary={dictionary.contact} />
           </div>
@@ -70,12 +103,18 @@ export function ContactPage({
               <div className="flex size-11 items-center justify-center border border-primary/40 bg-primary/10 text-primary">
                 <CalendarDays className="size-5" />
               </div>
-              <h2 className="font-display mt-5 text-xl font-bold">
+              <motion.h2
+                {...reveal()}
+                className="font-display mt-5 text-xl font-bold"
+              >
                 {text.booking}
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              </motion.h2>
+              <motion.p
+                {...reveal()}
+                className="mt-3 text-sm leading-7 text-muted-foreground"
+              >
                 {text.bookingText}
-              </p>
+              </motion.p>
               <a
                 href={siteConfig.calUrl}
                 target="_blank"
@@ -89,7 +128,9 @@ export function ContactPage({
             {siteConfig.email && (
               <div className="border-t border-border pt-5">
                 <Mail className="size-5 text-primary" />
-                <h2 className="mt-4 text-sm font-bold">{text.email}</h2>
+                <motion.h2 {...reveal()} className="mt-4 text-sm font-bold">
+                  {text.email}
+                </motion.h2>
                 <a
                   href={`mailto:${siteConfig.email}`}
                   className="mt-2 inline-block text-sm text-muted-foreground hover:text-primary"
@@ -100,9 +141,12 @@ export function ContactPage({
             )}
             <div className="border-t border-border pt-5">
               <MessageSquareText className="size-5 text-primary" />
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              <motion.p
+                {...reveal()}
+                className="mt-4 text-sm leading-7 text-muted-foreground"
+              >
                 {text.response}
-              </p>
+              </motion.p>
             </div>
           </aside>
         </section>

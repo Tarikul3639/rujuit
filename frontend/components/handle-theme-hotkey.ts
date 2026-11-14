@@ -1,7 +1,7 @@
 export function onThemeHotkey(
   event: KeyboardEvent,
   resolvedTheme: string | undefined,
-  setTheme: (theme: string) => void,
+  setTheme: (theme: string) => void
 ) {
   if (event.defaultPrevented || event.repeat) {
     return

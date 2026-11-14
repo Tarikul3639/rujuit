@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
+import { useReveal } from "@/lib/use-reveal"
 
 import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { Button } from "@/components/ui/button"
@@ -21,30 +22,38 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const links = [
     { label: dictionary.nav.services, href: `/${locale}/services` },
-    { label: dictionary.nav.approach, href: `/${locale}/about#approach` },
+    { label: dictionary.nav.approach, href: `/${locale}/about` },
     { label: dictionary.nav.work, href: `/${locale}/work` },
     { label: dictionary.nav.contact, href: `/${locale}/contact` },
   ]
 
+  const reveal = useReveal()
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto flex h-19 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link
           href={`/${locale}`}
           className="group flex items-center gap-3"
           aria-label="RujuIt home"
         >
           <Image
-            src="/rujooit-logo.svg"
+            src="/rujuit-logo.svg"
             alt=""
             width={38}
             height={38}
             priority
             className="size-9 object-contain"
           />
-          <span className="font-display text-[1.35rem] font-extrabold tracking-[-0.07em]">
-            Rujoo<span className="text-primary">IT</span>
-          </span>
+          <motion.span
+            {...reveal()}
+            className="font-display text-[1.35rem] font-extrabold tracking-[-0.07em]"
+          >
+            ruju
+            <motion.span {...reveal()} className="text-primary">
+              IT
+            </motion.span>
+          </motion.span>
         </Link>
 
         <nav

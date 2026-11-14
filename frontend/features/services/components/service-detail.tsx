@@ -1,4 +1,8 @@
+"use client"
+
 import Link from "next/link"
+import { motion } from "motion/react"
+import { useReveal } from "@/lib/use-reveal"
 
 import { EncryptedText } from "@/components/ui/encrypted-text"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
@@ -25,6 +29,8 @@ export function ServiceDetail({
   const copy = getServiceContent(locale)
   const service = copy.items[slug]
   const index = serviceSlugs.indexOf(slug)
+  const reveal = useReveal()
+
   return (
     <>
       <LocaleDocument locale={locale} />
@@ -37,7 +43,7 @@ export function ServiceDetail({
         <SiteHeader locale={locale} dictionary={dictionary} />
         <section className="section-atmosphere relative overflow-hidden border-b border-border py-20 sm:py-28">
           <div className="site-grid absolute inset-0 opacity-50" />
-          <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <Link
               href={`/${locale}/services`}
               className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground transition-colors hover:text-primary"
@@ -46,21 +52,40 @@ export function ServiceDetail({
             </Link>
             <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.45fr] lg:items-end">
               <div>
-                <p className="font-code text-[10px] tracking-[0.22em] text-primary">
-                  <EncryptedText text={`CAPABILITY / 0${index + 1}`} className="inline" revealedClassName="text-primary" encryptedClassName="text-primary/60" />
-                </p>
-                <h1 className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl">
+                <motion.p
+                  {...reveal()}
+                  className="font-code text-[10px] tracking-[0.22em] text-primary"
+                >
+                  <EncryptedText
+                    text={`CAPABILITY / 0${index + 1}`}
+                    className="inline"
+                    revealedClassName="text-primary"
+                    encryptedClassName="text-primary/60"
+                  />
+                </motion.p>
+                <motion.h1
+                  {...reveal()}
+                  className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+                >
                   {locale === "en" ? (
                     <TypewriterEffect
-                      words={service.title.split(" ").map((word) => ({ text: word, className: "text-foreground" }))}
+                      words={service.title.split(" ").map((word) => ({
+                        text: word,
+                        className: "text-foreground",
+                      }))}
                       className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
                       cursorClassName="bg-primary"
                     />
-                  ) : service.title}
-                </h1>
-                <p className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground">
+                  ) : (
+                    service.title
+                  )}
+                </motion.h1>
+                <motion.p
+                  {...reveal()}
+                  className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground"
+                >
                   {service.intro}
-                </p>
+                </motion.p>
               </div>
               <Link
                 href={`/${locale}/contact`}
@@ -72,56 +97,86 @@ export function ServiceDetail({
             </div>
           </div>
         </section>
-        <section className="section-atmosphere mx-auto grid max-w-[1440px] gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:px-12 lg:py-28">
+        <section className="section-atmosphere mx-auto grid max-w-7xl gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:px-12 lg:py-28">
           <aside className="space-y-8">
             <div className="border-t border-border pt-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 {copy.index.approach}
-              </p>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              </motion.p>
+              <motion.p
+                {...reveal()}
+                className="mt-4 text-sm leading-7 text-muted-foreground"
+              >
                 {service.short}
-              </p>
+              </motion.p>
             </div>
             <div className="border-t border-border pt-5">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 TECH STACK
-              </p>
+              </motion.p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {service.stack.map((tag) => (
-                  <span
+                  <motion.span
+                    {...reveal()}
                     key={tag}
                     className="font-code border border-border px-2.5 py-1.5 text-[10px] text-muted-foreground"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
           </aside>
           <div>
-            <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+            <motion.p
+              {...reveal()}
+              className="font-code text-[10px] tracking-[0.2em] text-primary"
+            >
               01 / {copy.index.outcome}
-            </p>
-            <h2 className="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+            </motion.p>
+            <motion.h2
+              {...reveal()}
+              className="font-display mt-5 text-3xl font-bold tracking-tight sm:text-4xl"
+            >
               {service.intro}
-            </h2>
-            <p className="mt-6 text-base leading-8 text-muted-foreground">
+            </motion.h2>
+            <motion.p
+              {...reveal()}
+              className="mt-6 text-base leading-8 text-muted-foreground"
+            >
               {service.body}
-            </p>
+            </motion.p>
             <div className="mt-12 grid gap-4 sm:grid-cols-3">
               {service.outcomes.map((item, itemIndex) => (
                 <div key={item} className="border border-border p-5">
-                  <span className="font-code text-xs text-primary">
+                  <motion.span
+                    {...reveal()}
+                    className="font-code text-xs text-primary"
+                  >
                     0{itemIndex + 1}
-                  </span>
-                  <p className="mt-5 text-sm leading-6 font-semibold">{item}</p>
+                  </motion.span>
+                  <motion.p
+                    {...reveal()}
+                    className="mt-5 text-sm leading-6 font-semibold"
+                  >
+                    {item}
+                  </motion.p>
                 </div>
               ))}
             </div>
             <div className="mt-16 border-t border-border pt-8">
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 02 / {copy.index.deliverables}
-              </p>
+              </motion.p>
               <div className="mt-6 space-y-4">
                 {service.deliverables.map((item) => (
                   <div key={item} className="flex gap-3 text-sm leading-7">
@@ -134,17 +189,26 @@ export function ServiceDetail({
           </div>
         </section>
         <section className="border-y border-border bg-muted/20 py-16">
-          <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
             <div>
-              <p className="font-code text-[10px] tracking-[0.2em] text-primary">
+              <motion.p
+                {...reveal()}
+                className="font-code text-[10px] tracking-[0.2em] text-primary"
+              >
                 RUJUIT / NEXT STEP
-              </p>
-              <h2 className="font-display mt-3 text-3xl font-bold tracking-tight">
+              </motion.p>
+              <motion.h2
+                {...reveal()}
+                className="font-display mt-3 text-3xl font-bold tracking-tight"
+              >
                 {dictionary.contact.title}
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
+              </motion.h2>
+              <motion.p
+                {...reveal()}
+                className="mt-2 text-sm text-muted-foreground"
+              >
                 {dictionary.contact.description}
-              </p>
+              </motion.p>
             </div>
             <Link
               href={`/${locale}/contact`}

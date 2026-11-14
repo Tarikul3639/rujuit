@@ -4,11 +4,13 @@ export const homeDictionary = {
     eyebrow: "এক্সপ্লোর করুন",
     title: "আপনার পরবর্তী পদক্ষেপের জন্য সঠিক দিকটি খুঁজুন।",
     description: "প্রতিটি বিষয়ের বিস্তারিত জানতে সংশ্লিষ্ট পেজে যান।",
-    servicesDescription: "ওয়েব, ক্লাউড, API, MCP এবং AI—আমাদের সম্পূর্ণ engineering capabilities দেখুন।",
+    servicesDescription:
+      "ওয়েব, ক্লাউড, API, MCP এবং AI—আমাদের সম্পূর্ণ engineering capabilities দেখুন।",
     servicesLink: "সার্ভিসগুলো দেখুন",
     workDescription: "বাস্তব প্রোডাক্ট ও engineering work-এর নির্বাচিত সংগ্রহ দেখুন।",
     workLink: "প্রজেক্ট দেখুন",
-    aboutDescription: "আমাদের কাজের দর্শন, engineering principles এবং কীভাবে সহযোগিতা করি তা জানুন।",
+    aboutDescription:
+      "আমাদের কাজের দর্শন, engineering principles এবং কীভাবে সহযোগিতা করি তা জানুন।",
     aboutLink: "আমাদের সম্পর্কে",
     aboutCta: "আমাদের সম্পর্কে আরও জানুন",
     contactDescription: "আপনার লক্ষ্য ও চ্যালেঞ্জ নিয়ে কথা শুরু করুন।",
@@ -161,7 +163,8 @@ export const homeDictionary = {
   faq: {
     eyebrow: "সাধারণ প্রশ্ন",
     title: "শুরু করার আগে যা জানা দরকার।",
-    description: "আমাদের কাজ, প্রযুক্তি এবং একসাথে কাজ শুরু করার পদ্ধতি সম্পর্কে কিছু সাধারণ প্রশ্নের উত্তর।",
+    description:
+      "আমাদের কাজ, প্রযুক্তি এবং একসাথে কাজ শুরু করার পদ্ধতি সম্পর্কে কিছু সাধারণ প্রশ্নের উত্তর।",
     contactLink: "আরও প্রশ্ন আছে? যোগাযোগ করুন",
   },
   contact: {

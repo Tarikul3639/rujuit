@@ -19,8 +19,8 @@ export function OrganizationSchema({
     description: dictionary.meta.description,
     ...(siteUrl ? { url: siteUrl } : {}),
     logo: siteUrl
-      ? new URL("/rujooit-logo.svg", siteUrl).toString()
-      : "/rujooit-logo.svg",
+      ? new URL("/rujuit-logo.svg", siteUrl).toString()
+      : "/rujuit-logo.svg",
     knowsAbout: [
       "Full-stack web development",
       "Cloud engineering",
