@@ -21,6 +21,7 @@ import { Spotlight } from "@/components/ui/spotlight"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { LocaleDocument } from "@/features/home/components/locale-document"
+import { FAQSection } from "@/features/home/components/faq-section"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
 
@@ -201,22 +202,18 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
           <div className="max-w-2xl">
             <Reveal>
               <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
-                01 / {isBangla ? "এক্সপ্লোর করুন" : "EXPLORE RUJOOIT"}
+                01 / {dictionary.explore.eyebrow}
               </p>
             </Reveal>
             <Reveal delay={0.06}>
               <h2 className="font-display mt-3 text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl">
-                {isBangla
-                  ? "আপনার পরবর্তী পদক্ষেপের জন্য সঠিক দিকটি খুঁজুন।"
-                  : "Find the right direction for your next move."}
+                {dictionary.explore.title}
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.12}>
             <p className="max-w-sm text-sm leading-7 text-muted-foreground">
-              {isBangla
-                ? "প্রতিটি বিষয়ের বিস্তারিত জানতে সংশ্লিষ্ট পেজে যান।"
-                : "Explore each area in depth on its dedicated page."}
+              {dictionary.explore.description}
             </p>
           </Reveal>
         </div>
@@ -255,12 +252,10 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                   {dictionary.nav.services}
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-7 text-white/70">
-                  {isBangla
-                    ? "ওয়েব, ক্লাউড, API, MCP এবং AI—আমাদের সম্পূর্ণ engineering capabilities দেখুন।"
-                    : "Web, cloud, APIs, MCP and AI—explore the full range of our engineering capabilities."}
+                  {dictionary.explore.servicesDescription}
                 </p>
                 <span className="mt-6 inline-flex items-center gap-3 text-sm font-bold text-primary">
-                  {isBangla ? "সার্ভিসগুলো দেখুন" : "Explore our services"}
+                  {dictionary.explore.servicesLink}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
@@ -282,7 +277,7 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <span className="font-code absolute top-4 left-4 bg-black/70 px-3 py-2 text-[9px] tracking-[0.18em] text-primary">
-                  03 / SELECTED BUILDS
+                  03 / {dictionary.explore.workEyebrow}
                 </span>
                 <span className="absolute right-4 bottom-4 flex size-10 items-center justify-center border border-white/40 bg-black/50 text-white backdrop-blur transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-black">
                   <ArrowUpRight className="size-4" />
@@ -293,12 +288,10 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                   {dictionary.nav.work}
                 </h3>
                 <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  {isBangla
-                    ? "বাস্তব প্রোডাক্ট ও engineering work-এর নির্বাচিত সংগ্রহ দেখুন।"
-                    : "Explore selected product builds and hands-on engineering work."}
+                  {dictionary.explore.workDescription}
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
-                  {isBangla ? "প্রজেক্ট দেখুন" : "View the work"}
+                  {dictionary.explore.workLink}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
@@ -313,7 +306,7 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
               <div className="site-grid absolute inset-0 opacity-60" />
               <div className="relative flex items-start justify-between">
                 <span className="font-code text-[9px] tracking-[0.2em] text-primary">
-                  04 / THE STUDIO
+                  04 / {dictionary.explore.studioEyebrow}
                 </span>
                 <span className="flex size-10 items-center justify-center border border-border bg-background transition-all group-hover:-translate-y-1 group-hover:border-primary">
                   <Network className="size-4 text-primary" />
@@ -324,12 +317,10 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                   {dictionary.nav.approach}
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-7 text-muted-foreground">
-                  {isBangla
-                    ? "আমাদের কাজের দর্শন, engineering principles এবং কীভাবে সহযোগিতা করি তা জানুন।"
-                    : "Learn about our principles, engineering mindset and how we collaborate."}
+                  {dictionary.explore.aboutDescription}
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
-                  {isBangla ? "আমাদের সম্পর্কে" : "Meet the team"}
+                  {dictionary.explore.aboutLink}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
@@ -343,17 +334,13 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
               <div className="absolute -top-10 right-20 size-44 rounded-full border border-black/15" />
               <div className="relative max-w-xl">
                 <span className="font-code text-[9px] font-semibold tracking-[0.2em] text-black/65">
-                  05 / LET&apos;S BUILD
+                  05 / {dictionary.explore.buildEyebrow}
                 </span>
                 <h3 className="font-display mt-5 text-3xl leading-tight font-extrabold tracking-[-0.05em] sm:text-4xl">
-                  {isBangla
-                    ? "একটি ভালো আইডিয়াকে বাস্তবে রূপ দিন।"
-                    : "Turn a good idea into something real."}
+                  {dictionary.explore.buildTitle}
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-7 text-black/70">
-                  {isBangla
-                    ? "আপনার লক্ষ্য ও চ্যালেঞ্জ নিয়ে কথা শুরু করুন।"
-                    : "Start a conversation about your goals and technical challenges."}
+                  {dictionary.explore.contactDescription}
                 </p>
               </div>
               <Link
@@ -364,6 +351,142 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                 <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Give visitors a concise view of the engagement journey without reproducing the full service pages.
+function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
+  const steps = dictionary.process.steps
+
+  return (
+    <section className="border-y border-border bg-muted/20 py-20 sm:py-24">
+      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <Reveal>
+          <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
+            02 / {dictionary.process.eyebrow}
+          </p>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <h2 className="font-display mt-4 max-w-3xl text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl">
+            {dictionary.process.title}
+          </h2>
+        </Reveal>
+        <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map(([number, title, description], index) => (
+            <Reveal key={number} delay={index * 0.06} className="h-full">
+              <article className="flex h-full min-h-[220px] flex-col bg-background p-6 sm:p-7">
+                <span className="font-code text-xs tracking-widest text-primary">{number} / 04</span>
+                <h3 className="font-display mt-10 text-xl font-bold tracking-tight">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{description}</p>
+                <span className="mt-auto pt-6 font-code text-[9px] tracking-[0.16em] text-muted-foreground">
+                  {dictionary.principles.delivery}
+                </span>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Summarize the principles behind the work; detailed company information remains on the About page.
+function PrinciplesSection({ dictionary, locale }: HomePageProps) {
+  const icons = [Code2, Layers3, Network]
+
+  return (
+    <section className="py-20 sm:py-24">
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-12">
+        <div>
+          <Reveal>
+            <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
+              03 / {dictionary.principles.eyebrow}
+            </p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="font-display mt-4 max-w-xl text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl">
+              {dictionary.approach.title}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p className="mt-5 max-w-xl text-sm leading-8 text-muted-foreground sm:text-base">
+              {dictionary.approach.description}
+            </p>
+          </Reveal>
+          <Reveal delay={0.18}>
+            <Link
+              href={`/${locale}/about`}
+              className="group mt-7 inline-flex items-center gap-3 border-b border-primary/50 pb-2 text-sm font-bold transition-colors hover:text-primary"
+            >
+              {dictionary.explore.aboutCta}
+              <ArrowUpRight className="size-4 text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
+          </Reveal>
+        </div>
+
+        <div className="border-y border-border">
+          {dictionary.approach.pillars.map(([title, description], index) => {
+            const Icon = icons[index]
+            return (
+              <Reveal key={title} delay={index * 0.07}>
+                <article className="grid grid-cols-[44px_1fr] gap-4 border-b border-border py-6 last:border-b-0 sm:gap-6 sm:py-7">
+                  <span className="flex size-10 items-center justify-center border border-primary/30 bg-primary/5 text-primary">
+                    <Icon className="size-4" />
+                  </span>
+                  <div>
+                    <span className="font-code text-[9px] tracking-[0.18em] text-primary">0{index + 1}</span>
+                    <h3 className="font-display mt-1 text-lg font-bold tracking-tight sm:text-xl">{title}</h3>
+                    <p className="mt-2 max-w-xl text-sm leading-7 text-muted-foreground">{description}</p>
+                  </div>
+                </article>
+              </Reveal>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Restore the prominent booking panel near the footer as a distinct conversion point.
+function BookingSection({ dictionary }: { dictionary: Dictionary }) {
+  return (
+    <section className="px-5 pb-20 sm:px-8 sm:pb-24 lg:px-12">
+      <div className="relative mx-auto max-w-[1440px] overflow-hidden border border-primary/40 bg-primary px-6 py-10 text-black sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+        <div className="pointer-events-none absolute -right-16 -bottom-40 size-[360px] rotate-12 border border-black/15 sm:-right-5 sm:size-[460px]" />
+        <div className="pointer-events-none absolute -right-2 -bottom-28 size-[260px] -rotate-12 border border-black/15 sm:size-[340px]" />
+        <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="max-w-3xl">
+            <Reveal>
+              <p className="font-code text-[10px] font-bold tracking-[0.2em] text-black/65">
+                05 / {dictionary.booking.eyebrow}
+              </p>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="font-display mt-4 text-3xl leading-[1.05] font-extrabold tracking-[-0.06em] text-balance sm:text-4xl lg:text-6xl">
+                {dictionary.booking.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-black/70 sm:text-base sm:leading-8">
+                {dictionary.contact.description}
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.18}>
+            <a
+              href={siteConfig.calUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex min-h-14 w-full items-center justify-center gap-4 border border-black bg-black px-6 py-4 text-sm font-bold text-primary transition-colors hover:bg-transparent hover:text-black sm:w-auto"
+            >
+              {dictionary.contact.book}
+              <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
           </Reveal>
         </div>
       </div>
@@ -383,6 +506,10 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
         <SiteHeader locale={locale} dictionary={dictionary} />
         <HeroSection locale={locale} dictionary={dictionary} />
         <ExploreSection locale={locale} dictionary={dictionary} />
+        <ProcessSection dictionary={dictionary} />
+        <PrinciplesSection locale={locale} dictionary={dictionary} />
+        <FAQSection locale={locale} />
+        <BookingSection dictionary={dictionary} />
         <SiteFooter locale={locale} dictionary={dictionary} />
       </main>
     </>
