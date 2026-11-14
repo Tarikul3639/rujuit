@@ -65,7 +65,7 @@ export function ServiceDetail({
                 </motion.p>
                 <motion.h1
                   {...reveal()}
-                  className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+                  className="font-display mt-5 max-w-4xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
                 >
                   {locale === "en" ? (
                     <TypewriterEffect
@@ -73,7 +73,7 @@ export function ServiceDetail({
                         text: word,
                         className: "text-foreground",
                       }))}
-                      className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+                      className="my-0 text-left text-5xl font-extrabold tracking-[-0.065em] sm:text-7xl"
                       cursorClassName="bg-primary"
                     />
                   ) : (
@@ -82,7 +82,7 @@ export function ServiceDetail({
                 </motion.h1>
                 <motion.p
                   {...reveal()}
-                  className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground"
+                  className="mt-7 max-w-3xl text-lg text-muted-foreground"
                 >
                   {service.intro}
                 </motion.p>
@@ -108,7 +108,7 @@ export function ServiceDetail({
               </motion.p>
               <motion.p
                 {...reveal()}
-                className="mt-4 text-sm leading-7 text-muted-foreground"
+                className="mt-4 text-sm text-muted-foreground"
               >
                 {service.short}
               </motion.p>
@@ -148,7 +148,7 @@ export function ServiceDetail({
             </motion.h2>
             <motion.p
               {...reveal()}
-              className="mt-6 text-base leading-8 text-muted-foreground"
+              className="mt-6 text-base text-muted-foreground"
             >
               {service.body}
             </motion.p>
@@ -163,7 +163,7 @@ export function ServiceDetail({
                   </motion.span>
                   <motion.p
                     {...reveal()}
-                    className="mt-5 text-sm leading-6 font-semibold"
+                    className="mt-5 text-sm font-semibold"
                   >
                     {item}
                   </motion.p>
@@ -179,7 +179,7 @@ export function ServiceDetail({
               </motion.p>
               <div className="mt-6 space-y-4">
                 {service.deliverables.map((item) => (
-                  <div key={item} className="flex gap-3 text-sm leading-7">
+                  <div key={item} className="flex gap-3 text-sm">
                     <Check className="mt-1 size-4 shrink-0 text-primary" />
                     {item}
                   </div>

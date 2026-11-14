@@ -198,11 +198,11 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
           >
             <span className="block">{hero.titleStart}</span>
             {/* Fixed-height, single-line slot: flipping words can never change the layout height */}
-            <span className="relative block h-[1.25em] overflow-hidden whitespace-nowrap text-primary">
+            <span className="relative block whitespace-nowrap text-primary">
               <FlipWords
                 words={[...hero.rotating]}
                 duration={3200}
-                className="px-0 text-primary!"
+                className="px-0! text-primary!"
               />
             </span>
             <span className="block">{hero.titleEnd}</span>
@@ -215,33 +215,33 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
             {hero.description}
           </motion.p>
 
-            <motion.div
-              {...reveal(0.24, 12, 0.55)}
-              className="mt-9 flex flex-row gap-3 w-fit"
+          <motion.div
+            {...reveal(0.24, 12, 0.55)}
+            className="mt-9 flex w-fit flex-row gap-3"
+          >
+            <Link
+              href={`/${locale}/services`}
+              className="group inline-flex w-full items-center justify-center gap-3 bg-primary px-5 py-3 text-xs font-bold whitespace-nowrap text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_38px_-14px_rgba(250,204,21,0.75)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7 md:text-sm"
             >
-              <Link
-                href={`/${locale}/services`}
-                className="group inline-flex w-full items-center justify-center gap-3 bg-primary px-5 py-3 text-xs md:text-sm font-bold whitespace-nowrap text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_38px_-14px_rgba(250,204,21,0.75)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7"
-              >
-                <span className="sm:hidden">Our Services</span>
-                <span className="hidden sm:inline">{hero.primary}</span>
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <a
-                href={siteConfig.calUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-full items-center justify-center gap-3 border border-border bg-background/70 px-5 py-3 text-xs md:text-sm font-semibold whitespace-nowrap transition-colors hover:border-primary/60 hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7"
-              >
-                <span className="sm:hidden">Book a Call</span>
-                <span className="hidden sm:inline">{hero.secondary}</span>
-                <ArrowUpRight className="size-4 text-primary" />
-              </a>
-            </motion.div>
+              <span className="sm:hidden">Our Services</span>
+              <span className="hidden sm:inline">{hero.primary}</span>
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <a
+              href={siteConfig.calUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full items-center justify-center gap-3 border border-border bg-background/70 px-5 py-3 text-xs font-semibold whitespace-nowrap transition-colors hover:border-primary/60 hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7 md:text-sm"
+            >
+              <span className="sm:hidden">Book a Call</span>
+              <span className="hidden sm:inline">{hero.secondary}</span>
+              <ArrowUpRight className="size-4 text-primary" />
+            </a>
+          </motion.div>
 
           <motion.p
             {...reveal(0.32, 10, 0.55)}
-            className="mt-8 max-w-sm border-l-2 border-primary/60 pl-4 text-sm leading-6 text-muted-foreground"
+            className="mt-8 max-w-sm border-l-2 border-primary/60 pl-4 text-sm text-muted-foreground"
           >
             {hero.note}
           </motion.p>
@@ -316,7 +316,7 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.22 }}
-                  className="font-code text-[12px] leading-7 sm:text-[13px]"
+                  className="font-code text-[12px] sm:text-[13px]"
                 >
                   {current.lines.map((line, i) => (
                     <div key={i} className="flex gap-4">

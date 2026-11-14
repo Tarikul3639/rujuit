@@ -28,9 +28,7 @@ export function PoliciesContent({
           <CheckCircle2 className="size-4 text-primary" />
           {copy.noteTitle}
         </div>
-        <p className="mt-3 text-sm leading-7 text-muted-foreground">
-          {copy.note}
-        </p>
+        <p className="mt-3 text-sm text-muted-foreground">{copy.note}</p>
       </motion.div>
 
       <div className="divide-y divide-border">
@@ -50,14 +48,14 @@ export function PoliciesContent({
             <h2 className="font-display mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
               {section.title}
             </h2>
-            <p className="mt-4 text-base leading-7 font-medium text-foreground/90">
+            <p className="mt-4 text-base sm:text-lg font-medium text-foreground/90">
               {section.intro}
             </p>
             <div className="mt-5 space-y-4">
               {section.paragraphs.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-sm leading-5 text-muted-foreground sm:text-[15px]"
+                  className="text-sm text-muted-foreground sm:text-base"
                 >
                   {paragraph}
                 </p>

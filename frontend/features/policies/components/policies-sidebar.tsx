@@ -41,12 +41,12 @@ export function PoliciesSidebar({
             <span className="font-code pt-0.5 text-[10px] text-primary">
               {section.number}
             </span>
-            <span className="leading-5">{section.title}</span>
+            <span className="">{section.title}</span>
           </a>
         ))}
       </nav>
       <div className="mt-8 border-t border-border pt-5">
-        <p className="text-xs leading-6 text-muted-foreground">
+        <p className="text-xs text-muted-foreground">
           {locale === "bn"
             ? "প্রজেক্ট বা রেফারেল নিয়ে কোনো প্রশ্ন আছে?"
             : "Questions about a project or referral?"}

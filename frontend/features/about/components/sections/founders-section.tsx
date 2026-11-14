@@ -35,7 +35,7 @@ export function FoundersSection({
         </motion.h2>
         <motion.p
           {...reveal()}
-          className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base"
+          className="mt-5 max-w-2xl text-sm text-muted-foreground sm:text-base"
         >
           {text.foundersIntro}
         </motion.p>
@@ -75,7 +75,7 @@ export function FoundersSection({
                   <p className="mt-1 text-xs font-medium text-muted-foreground sm:text-sm">
                     {founder.role}
                   </p>
-                  <p className="mt-4 text-xs leading-6 text-muted-foreground sm:text-sm">
+                  <p className="mt-4 text-xs text-muted-foreground sm:text-sm">
                     {founder.bio}
                   </p>
                 </div>

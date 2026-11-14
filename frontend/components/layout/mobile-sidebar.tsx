@@ -93,7 +93,7 @@ export function MobileNavigationSidebar({
                 const isActive = isHomeLink
                   ? pathname === link.href
                   : pathname === link.href ||
-                  pathname.startsWith(`${link.href}/`)
+                    pathname.startsWith(`${link.href}/`)
                 return (
                   <Link
                     key={link.href}

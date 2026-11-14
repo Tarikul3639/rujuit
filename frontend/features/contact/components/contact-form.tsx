@@ -42,7 +42,7 @@ export function ContactForm({ dictionary }: ContactFormProps) {
   return (
     <form
       onSubmit={form.handleSubmit((values) => onSubmit(values, setSubmitted))}
-      className="space-y-5"
+      className="space-y-5 rounded-sm bg-gradient-to-br from-primary/[0.06] via-transparent to-primary/[0.03] p-4 sm:p-6"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <motion.div {...reveal(0, 16, 0.55)} className="space-y-2">
@@ -141,7 +141,7 @@ export function ContactForm({ dictionary }: ContactFormProps) {
         </Button>
         <motion.p
           {...reveal()}
-          className="max-w-xs text-xs leading-5 text-muted-foreground"
+          className="max-w-xs text-xs text-muted-foreground"
         >
           {dictionary.privacy}
         </motion.p>

@@ -85,7 +85,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
         <div className="hidden items-center gap-2 lg:flex">
           <div className="inline-flex items-center border border-border bg-muted/30 p-0.5">
-            <div aria-label="Language" className="inline-flex items-center pl-2 pr-1">
+            <div
+              aria-label="Language"
+              className="inline-flex items-center pr-1 pl-2"
+            >
               <Link
                 href={enHref}
                 hrefLang="en"
@@ -126,12 +129,15 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           </div>
           <Button
             asChild
-            className="group relative h-10 overflow-hidden rounded-none border-2 border-primary bg-primary px-4 text-xs font-black tracking-wider text-primary-foreground shadow-[3px_3px_0px_var(--foreground)] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary hover:shadow-[5px_5px_0px_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+            className="group relative h-10 overflow-hidden rounded-none border-2 border-primary bg-primary px-4 text-xs font-bold tracking-wider text-primary-foreground shadow-[3px_3px_0px_var(--foreground)] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary hover:shadow-[5px_5px_0px_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
           >
             <a href={siteConfig.calUrl} target="_blank" rel="noreferrer">
               <span className="relative z-10">{dictionary.nav.book}</span>
-              <ArrowUpRight className="relative z-10 ml-1 size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              <span aria-hidden="true" className="absolute right-0 top-0 size-2 border-l border-b border-primary-foreground/70" />
+              <ArrowUpRight className="relative z-10 ml-1 size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span
+                aria-hidden="true"
+                className="absolute top-0 right-0 size-2 border-b border-l border-primary-foreground/70"
+              />
             </a>
           </Button>
         </div>

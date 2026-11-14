@@ -16,7 +16,7 @@ export function ThemeToggle() {
       size="icon"
       aria-label="Toggle color theme"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="size-8 rounded-xs border-border lg:border-none bg-transparent! [&_svg]:size-3.5 hover:text-primary"
+      className="size-8 rounded-xs border-border bg-transparent! hover:text-primary lg:border-none [&_svg]:size-3.5"
     >
       <Sun className="hidden size-4 dark:block" />
       <Moon className="size-4 dark:hidden" />

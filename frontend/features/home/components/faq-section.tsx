@@ -35,13 +35,13 @@ export function FAQSection({ locale }: { locale: Locale }) {
           </motion.p>
           <motion.h2
             {...reveal()}
-            className="font-display mt-4 max-w-md text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl"
+            className="font-display mt-4 max-w-md text-4xl font-bold tracking-[-0.055em] text-balance sm:text-5xl"
           >
             {copy.title}
           </motion.h2>
           <motion.p
             {...reveal()}
-            className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground"
+            className="mt-6 max-w-sm text-sm text-muted-foreground"
           >
             {copy.description}
           </motion.p>
@@ -64,7 +64,7 @@ export function FAQSection({ locale }: { locale: Locale }) {
               <AccordionTrigger className="gap-5 py-4 text-left text-base font-semibold hover:no-underline sm:text-lg">
                 <motion.span {...reveal()}>{item.question}</motion.span>
               </AccordionTrigger>
-              <AccordionContent className="max-w-2xl pb-4 text-sm leading-7 text-muted-foreground sm:text-base">
+              <AccordionContent className="max-w-2xl pb-4 text-sm text-muted-foreground sm:text-base">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

@@ -32,7 +32,7 @@ export function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
         <Reveal delay={0.06}>
           <motion.h2
             {...reveal()}
-            className="font-display mt-4 max-w-3xl text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl"
+            className="font-display mt-4 max-w-3xl text-3xl font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl"
           >
             {dictionary.process.title}
           </motion.h2>
@@ -58,7 +58,7 @@ export function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
                 </motion.h3>
                 <motion.p
                   {...reveal()}
-                  className="mt-3 text-sm leading-7 text-muted-foreground"
+                  className="mt-3 text-sm text-muted-foreground"
                 >
                   {description}
                 </motion.p>

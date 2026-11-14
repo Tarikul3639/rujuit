@@ -46,13 +46,13 @@ export function PoliciesPage({
             </motion.p>
             <motion.h1
               {...reveal()}
-              className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+              className="font-display mt-5 max-w-4xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
             >
               {copy.title}
             </motion.h1>
             <motion.p
               {...reveal()}
-              className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground"
+              className="mt-7 max-w-3xl text-lg text-muted-foreground"
             >
               {copy.description}
             </motion.p>

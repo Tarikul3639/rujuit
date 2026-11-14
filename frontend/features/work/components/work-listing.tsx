@@ -53,7 +53,7 @@ export function WorkListing({
             </motion.p>
             <motion.h1
               {...reveal()}
-              className="font-display mt-6 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+              className="font-display mt-6 max-w-4xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
             >
               {locale === "en" ? (
                 <TypewriterEffect
@@ -61,7 +61,7 @@ export function WorkListing({
                     text: word,
                     className: "text-foreground",
                   }))}
-                  className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+                  className="my-0 text-left text-5xl font-extrabold tracking-[-0.065em] sm:text-7xl"
                   cursorClassName="bg-primary"
                 />
               ) : (
@@ -70,13 +70,13 @@ export function WorkListing({
             </motion.h1>
             <motion.p
               {...reveal()}
-              className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
+              className="mt-7 max-w-2xl text-base text-muted-foreground sm:text-lg"
             >
               {copy.index.description}
             </motion.p>
             <motion.p
               {...reveal()}
-              className="mt-4 max-w-2xl border-l border-primary/60 pl-4 text-xs leading-6 text-muted-foreground"
+              className="mt-4 max-w-2xl border-l border-primary/60 pl-4 text-xs text-muted-foreground"
             >
               {copy.index.note}
             </motion.p>
@@ -151,7 +151,7 @@ export function WorkListing({
                         </motion.h2>
                         <motion.p
                           {...reveal(cardDelay + 0.3, 12, 0.5)}
-                          className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground"
+                          className="mt-3 max-w-xl text-sm text-muted-foreground"
                         >
                           {translated.summary}
                         </motion.p>

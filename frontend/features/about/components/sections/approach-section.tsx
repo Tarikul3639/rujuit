@@ -47,7 +47,7 @@ export function ApproachSection({ text }: { text: AboutCopy }) {
             </motion.h3>
             <motion.p
               {...reveal()}
-              className="mt-3 text-sm leading-7 text-muted-foreground"
+              className="mt-3 text-sm text-muted-foreground"
             >
               {body}
             </motion.p>

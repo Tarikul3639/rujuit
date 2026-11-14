@@ -57,7 +57,7 @@ export function ContactPage({
             </motion.p>
             <motion.h1
               {...reveal()}
-              className="font-display mt-6 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+              className="font-display mt-6 max-w-4xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
             >
               {locale === "en" ? (
                 <TypewriterEffect
@@ -65,7 +65,7 @@ export function ContactPage({
                     text: word,
                     className: "text-foreground",
                   }))}
-                  className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+                  className="my-0 text-left text-5xl font-extrabold tracking-[-0.065em] sm:text-7xl"
                   cursorClassName="bg-primary"
                 />
               ) : (
@@ -74,7 +74,7 @@ export function ContactPage({
             </motion.h1>
             <motion.p
               {...reveal()}
-              className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground"
+              className="mt-7 max-w-2xl text-lg text-muted-foreground"
             >
               {text.intro}
             </motion.p>
@@ -111,7 +111,7 @@ export function ContactPage({
               </motion.h2>
               <motion.p
                 {...reveal()}
-                className="mt-3 text-sm leading-7 text-muted-foreground"
+                className="mt-3 text-sm text-muted-foreground"
               >
                 {text.bookingText}
               </motion.p>
@@ -143,7 +143,7 @@ export function ContactPage({
               <MessageSquareText className="size-5 text-primary" />
               <motion.p
                 {...reveal()}
-                className="mt-4 text-sm leading-7 text-muted-foreground"
+                className="mt-4 text-sm text-muted-foreground"
               >
                 {text.response}
               </motion.p>

@@ -29,13 +29,13 @@ export function FeaturedWork({ locale }: { locale: Locale }) {
             </motion.p>
             <motion.h2
               {...reveal()}
-              className="font-display mt-4 text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl"
+              className="font-display mt-4 text-4xl font-bold tracking-[-0.055em] text-balance sm:text-5xl"
             >
               {copy.index.title}
             </motion.h2>
             <motion.p
               {...reveal()}
-              className="mt-5 text-sm leading-7 text-muted-foreground"
+              className="mt-5 text-sm text-muted-foreground"
             >
               {copy.index.description}
             </motion.p>
@@ -101,7 +101,7 @@ export function FeaturedWork({ locale }: { locale: Locale }) {
                     </motion.h3>
                     <motion.p
                       {...reveal()}
-                      className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground"
+                      className="mt-2 max-w-xl text-sm text-muted-foreground"
                     >
                       {translated.summary}
                     </motion.p>

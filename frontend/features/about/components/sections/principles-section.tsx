@@ -47,7 +47,7 @@ export function PrinciplesSection({ text }: { text: AboutCopy }) {
                 </motion.h3>
                 <motion.p
                   {...reveal()}
-                  className="mt-3 max-w-md text-sm leading-7 text-muted-foreground"
+                  className="mt-3 max-w-md text-sm text-muted-foreground"
                 >
                   {item.body}
                 </motion.p>

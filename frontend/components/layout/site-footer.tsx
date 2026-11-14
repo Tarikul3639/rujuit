@@ -58,7 +58,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
             </motion.p>
             <motion.p
               {...reveal()}
-              className="mt-4 max-w-sm text-sm leading-7 text-muted-foreground"
+              className="mt-4 max-w-sm text-sm text-muted-foreground"
             >
               {dictionary.footer.description}
             </motion.p>

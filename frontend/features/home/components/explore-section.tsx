@@ -52,7 +52,7 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
             <Reveal delay={0.06}>
               <motion.h2
                 {...reveal()}
-                className="font-display mt-3 text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl"
+                className="font-display mt-3 text-3xl font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl"
               >
                 {dictionary.explore.title}
               </motion.h2>
@@ -61,7 +61,7 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
           <Reveal delay={0.12}>
             <motion.p
               {...reveal()}
-              className="max-w-sm text-sm leading-7 text-muted-foreground"
+              className="max-w-sm text-sm text-muted-foreground"
             >
               {dictionary.explore.description}
             </motion.p>
@@ -116,7 +116,7 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
                 </motion.h3>
                 <motion.p
                   {...reveal()}
-                  className="mt-3 max-w-md text-sm leading-7 text-white/70"
+                  className="mt-3 max-w-md text-sm text-white/70"
                 >
                   {dictionary.explore.servicesDescription}
                 </motion.p>
@@ -171,7 +171,7 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
                 </motion.h3>
                 <motion.p
                   {...reveal()}
-                  className="mt-2 text-sm leading-7 text-muted-foreground"
+                  className="mt-2 text-sm text-muted-foreground"
                 >
                   {dictionary.explore.workDescription}
                 </motion.p>
@@ -215,7 +215,7 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
                 </motion.h3>
                 <motion.p
                   {...reveal()}
-                  className="mt-3 max-w-md text-sm leading-7 text-muted-foreground"
+                  className="mt-3 max-w-md text-sm text-muted-foreground"
                 >
                   {dictionary.explore.aboutDescription}
                 </motion.p>
@@ -244,13 +244,13 @@ export function ExploreSection({ locale, dictionary }: HomePageProps) {
                 </motion.span>
                 <motion.h3
                   {...reveal()}
-                  className="font-display mt-5 text-3xl leading-tight font-extrabold tracking-tighter sm:text-4xl"
+                  className="font-display mt-5 text-3xl font-extrabold tracking-tighter sm:text-4xl"
                 >
                   {dictionary.explore.buildTitle}
                 </motion.h3>
                 <motion.p
                   {...reveal()}
-                  className="mt-3 max-w-md text-sm leading-7 text-black/70"
+                  className="mt-3 max-w-md text-sm text-black/70"
                 >
                   {dictionary.explore.contactDescription}
                 </motion.p>

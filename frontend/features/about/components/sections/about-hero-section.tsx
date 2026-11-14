@@ -35,7 +35,7 @@ export function AboutHeroSection({
         </motion.p>
         <motion.h1
           {...reveal()}
-          className="font-display mt-6 max-w-5xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+          className="font-display mt-6 max-w-5xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
         >
           {locale === "en" ? (
             <TypewriterEffect
@@ -43,7 +43,7 @@ export function AboutHeroSection({
                 text: word,
                 className: "text-foreground",
               }))}
-              className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+              className="my-0 text-left text-5xl font-extrabold tracking-[-0.065em] sm:text-7xl"
               cursorClassName="bg-primary"
             />
           ) : (
@@ -52,7 +52,7 @@ export function AboutHeroSection({
         </motion.h1>
         <motion.p
           {...reveal()}
-          className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground"
+          className="mt-8 max-w-2xl text-lg text-muted-foreground"
         >
           {text.intro}
         </motion.p>

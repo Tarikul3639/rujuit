@@ -30,7 +30,7 @@ export function BookingSection({ dictionary }: { dictionary: Dictionary }) {
             <Reveal delay={0.06}>
               <motion.h2
                 {...reveal()}
-                className="font-display mt-4 text-3xl leading-[1.05] font-extrabold tracking-[-0.06em] text-balance sm:text-4xl lg:text-6xl"
+                className="font-display mt-4 text-3xl font-extrabold tracking-[-0.06em] text-balance sm:text-4xl lg:text-6xl"
               >
                 {dictionary.booking.title}
               </motion.h2>
@@ -38,7 +38,7 @@ export function BookingSection({ dictionary }: { dictionary: Dictionary }) {
             <Reveal delay={0.12}>
               <motion.p
                 {...reveal()}
-                className="mt-5 max-w-2xl text-sm leading-7 text-black/70 sm:text-base sm:leading-8"
+                className="sm: mt-5 max-w-2xl text-sm text-black/70 sm:text-base"
               >
                 {dictionary.contact.description}
               </motion.p>

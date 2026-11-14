@@ -26,13 +26,13 @@ export function MissionSection({ text }: { text: AboutCopy }) {
       <div>
         <motion.h2
           {...reveal()}
-          className="font-display max-w-3xl text-3xl leading-tight font-bold tracking-tighter sm:text-5xl"
+          className="font-display max-w-3xl text-3xl font-bold tracking-tighter sm:text-5xl"
         >
           {text.missionTitle}
         </motion.h2>
         <motion.p
           {...reveal()}
-          className="mt-7 max-w-3xl text-base leading-8 text-muted-foreground"
+          className="mt-7 max-w-3xl text-base text-muted-foreground"
         >
           {text.missionBody}
         </motion.p>

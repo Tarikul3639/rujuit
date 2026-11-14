@@ -65,7 +65,7 @@ export function ServicesListing({
 
             <motion.h1
               {...reveal()}
-              className="font-display mt-6 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+              className="font-display mt-6 max-w-4xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
             >
               {locale === "en" ? (
                 <TypewriterEffect
@@ -73,7 +73,7 @@ export function ServicesListing({
                     text: word,
                     className: "text-foreground",
                   }))}
-                  className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+                  className="my-0 text-left text-5xl font-extrabold tracking-[-0.065em] sm:text-7xl"
                   cursorClassName="bg-primary"
                 />
               ) : (
@@ -83,7 +83,7 @@ export function ServicesListing({
 
             <motion.p
               {...reveal()}
-              className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
+              className="mt-7 max-w-2xl text-base text-muted-foreground sm:text-lg"
             >
               {copy.index.description}
             </motion.p>
@@ -126,7 +126,7 @@ export function ServicesListing({
                     </motion.h2>
                     <motion.p
                       {...reveal(0.4, 14, 0.5)}
-                      className="mt-4 text-sm leading-7 text-muted-foreground"
+                      className="mt-4 text-sm text-muted-foreground"
                     >
                       {service.short}
                     </motion.p>

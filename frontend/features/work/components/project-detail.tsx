@@ -67,7 +67,7 @@ export function ProjectDetail({
                 </motion.p>
                 <motion.h1
                   {...reveal()}
-                  className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
+                  className="font-display mt-5 max-w-4xl text-5xl font-extrabold tracking-[-0.065em] text-balance sm:text-7xl"
                 >
                   {locale === "en" ? (
                     <TypewriterEffect
@@ -75,7 +75,7 @@ export function ProjectDetail({
                         text: word,
                         className: "text-foreground",
                       }))}
-                      className="my-0 text-left text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] sm:text-7xl"
+                      className="my-0 text-left text-5xl font-extrabold tracking-[-0.065em] sm:text-7xl"
                       cursorClassName="bg-primary"
                     />
                   ) : (
@@ -84,7 +84,7 @@ export function ProjectDetail({
                 </motion.h1>
                 <motion.p
                   {...reveal()}
-                  className="mt-7 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg"
+                  className="mt-7 max-w-3xl text-base text-muted-foreground sm:text-lg"
                 >
                   {translated.summary}
                 </motion.p>
@@ -176,13 +176,13 @@ export function ProjectDetail({
             </motion.p>
             <motion.h2
               {...reveal()}
-              className="font-display mt-5 text-3xl leading-tight font-bold tracking-tighter sm:text-4xl"
+              className="font-display mt-5 text-3xl font-bold tracking-tighter sm:text-4xl"
             >
               {project.title}
             </motion.h2>
             <motion.p
               {...reveal()}
-              className="mt-6 text-base leading-8 text-muted-foreground"
+              className="mt-6 text-base text-muted-foreground"
             >
               {translated.description}
             </motion.p>
@@ -205,10 +205,7 @@ export function ProjectDetail({
                     >
                       0{itemIndex + 1}
                     </motion.span>
-                    <motion.p
-                      {...reveal()}
-                      className="max-w-2xl text-sm leading-7"
-                    >
+                    <motion.p {...reveal()} className="max-w-2xl text-sm">
                       {highlight}
                     </motion.p>
                   </div>
@@ -295,7 +292,7 @@ export function ProjectDetail({
             </motion.span>
             <motion.span
               {...reveal()}
-              className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm"
+              className="mt-2 block text-xs text-muted-foreground sm:text-sm"
             >
               {
                 copy.projects[previous.slug as keyof typeof copy.projects]
@@ -321,7 +318,7 @@ export function ProjectDetail({
             </motion.span>
             <motion.span
               {...reveal()}
-              className="mt-2 block text-xs leading-5 text-muted-foreground sm:text-sm"
+              className="mt-2 block text-xs text-muted-foreground sm:text-sm"
             >
               {copy.projects[next.slug as keyof typeof copy.projects].summary}
             </motion.span>

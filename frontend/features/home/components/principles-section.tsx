@@ -36,7 +36,7 @@ export function PrinciplesSection({ dictionary, locale }: HomePageProps) {
           <Reveal delay={0.06}>
             <motion.h2
               {...reveal()}
-              className="font-display mt-4 max-w-xl text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl"
+              className="font-display mt-4 max-w-xl text-3xl font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl"
             >
               {dictionary.approach.title}
             </motion.h2>
@@ -44,7 +44,7 @@ export function PrinciplesSection({ dictionary, locale }: HomePageProps) {
           <Reveal delay={0.12}>
             <motion.p
               {...reveal()}
-              className="mt-5 max-w-xl text-sm leading-8 text-muted-foreground sm:text-base"
+              className="mt-5 max-w-xl text-sm text-muted-foreground sm:text-base"
             >
               {dictionary.approach.description}
             </motion.p>
@@ -90,7 +90,7 @@ export function PrinciplesSection({ dictionary, locale }: HomePageProps) {
                     </motion.h3>
                     <motion.p
                       {...reveal()}
-                      className="mt-2 max-w-xl text-sm leading-7 text-muted-foreground"
+                      className="mt-2 max-w-xl text-sm text-muted-foreground"
                     >
                       {description}
                     </motion.p>
