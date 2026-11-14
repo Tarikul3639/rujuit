@@ -166,6 +166,7 @@ export const homeDictionary = {
     name: "আপনার নাম",
     email: "কাজের ইমেইল",
     service: "কোন বিষয়ে সহায়তা প্রয়োজন?",
+    servicePlaceholder: "একটি সার্ভিস নির্বাচন করুন",
     message: "আপনার প্রজেক্ট সম্পর্কে কিছু বলুন",
     send: "ইনকোয়ারি প্রস্তুত করুন",
     privacy: "এখনো backend যুক্ত হয়নি। ফর্মের তথ্য এই browser-এর মধ্যেই থাকবে।",

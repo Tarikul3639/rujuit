@@ -166,6 +166,7 @@ export const homeDictionary = {
     name: "Your name",
     email: "Work email",
     service: "What do you need help with?",
+    servicePlaceholder: "Choose a service",
     message: "A little about your project",
     send: "Prepare inquiry",
     privacy:

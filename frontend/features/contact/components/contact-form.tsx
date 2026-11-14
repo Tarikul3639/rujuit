@@ -81,7 +81,7 @@ export function ContactForm({ dictionary }: ContactFormProps) {
                 aria-invalid={Boolean(form.formState.errors.service)}
                 className="h-12 w-full rounded-md bg-background/70 px-3 text-sm"
               >
-                <SelectValue placeholder="—" />
+                <SelectValue placeholder={dictionary.servicePlaceholder} />
               </SelectTrigger>
               <SelectContent>
                 {dictionary.options.map((option) => (
