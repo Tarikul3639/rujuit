@@ -20,10 +20,10 @@ type SiteHeaderProps = {
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const links = [
-    { label: dictionary.nav.services, href: `/${locale}#services` },
-    { label: dictionary.nav.approach, href: `/${locale}#approach` },
+    { label: dictionary.nav.services, href: `/${locale}/services` },
+    { label: dictionary.nav.approach, href: `/${locale}/about#approach` },
     { label: dictionary.nav.work, href: `/${locale}/work` },
-    { label: dictionary.nav.contact, href: `/${locale}#contact` },
+    { label: dictionary.nav.contact, href: `/${locale}/contact` },
   ]
 
   return (

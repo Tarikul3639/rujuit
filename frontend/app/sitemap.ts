@@ -12,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const coreRoutes = ["en", "bn"].flatMap((locale) => [
     { url: `${baseUrl}/${locale}`, lastModified, changeFrequency: "monthly" as const, priority: locale === "en" ? 1 : 0.9 },
+    { url: `${baseUrl}/${locale}/services`, lastModified, changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${baseUrl}/${locale}/about`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/${locale}/contact`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${baseUrl}/${locale}/work`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
   ])
 
@@ -23,6 +26,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
   )
+  const serviceRoutes = ["en", "bn"].flatMap((locale) =>
+    ["web-development", "cloud-engineering", "api-integration", "mcp-development", "ai-automation", "custom-software"].map((slug) => ({
+      url: `${baseUrl}/${locale}/services/${slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+  )
 
-  return [...coreRoutes, ...projectRoutes]
+  return [...coreRoutes, ...projectRoutes, ...serviceRoutes]
 }

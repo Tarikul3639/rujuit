@@ -45,16 +45,16 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               01 / {dictionary.footer.links}
             </p>
             <div className="flex flex-col items-start gap-3 text-sm text-muted-foreground">
-              <Link href="#services" className="hover:text-foreground">
+              <Link href={`/${locale}/services`} className="hover:text-foreground">
                 {dictionary.nav.services}
               </Link>
-              <Link href="#approach" className="hover:text-foreground">
+              <Link href={`/${locale}/about`} className="hover:text-foreground">
                 {dictionary.nav.approach}
               </Link>
-              <Link href="#difference" className="hover:text-foreground">
+              <Link href={`/${locale}/work`} className="hover:text-foreground">
                 {dictionary.nav.work}
               </Link>
-              <Link href="#contact" className="hover:text-foreground">
+              <Link href={`/${locale}/contact`} className="hover:text-foreground">
                 {dictionary.nav.contact}
               </Link>
             </div>
