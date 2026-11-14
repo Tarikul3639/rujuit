@@ -1,22 +1,4 @@
-import { commonDictionary as enCommon } from "@/messages/en/common"
-import { homeDictionary as enHome } from "@/messages/en/home"
-import { commonDictionary as bnCommon } from "@/messages/bn/common"
-import { homeDictionary as bnHome } from "@/messages/bn/home"
-
-export type Locale = "en" | "bn"
-
-export function isLocale(value: string): value is Locale {
-  return value === "en" || value === "bn"
-}
-
-// Each locale is composed from page-focused translation modules.
-const dictionaries = {
-  en: { ...enCommon, ...enHome },
-  bn: { ...bnCommon, ...bnHome },
-} as const
-
-export function getDictionary(locale: Locale) {
-  return dictionaries[locale]
-}
-
-export type Dictionary = ReturnType<typeof getDictionary>
+export { getDictionary } from "@/lib/get-dictionary"
+export type { Dictionary } from "@/lib/get-dictionary"
+export { isLocale } from "@/lib/is-locale"
+export type { Locale } from "@/lib/locale-types"

@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
-import { z } from "zod"
 import { ArrowUpRight, CheckCircle2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -18,6 +17,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import type { Dictionary } from "@/lib/i18n"
+import { contactFormSchema, type ContactFormValues } from "@/features/contact/components/contact-form.schema"
+import { onSubmit } from "@/features/contact/components/submit-contact-form"
 
 type ContactFormProps = {
   dictionary: Dictionary["contact"]
@@ -26,27 +27,16 @@ type ContactFormProps = {
 // Client-side validation is ready; connect your own API when you want to receive submissions.
 export function ContactForm({ dictionary }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false)
-  const schema = z.object({
-    name: z.string().min(2),
-    email: z.string().email(),
-    service: z.string().min(1),
-    message: z.string().min(10),
-  })
-
-  type FormValues = z.infer<typeof schema>
-  const form = useForm<FormValues>({
-    resolver: zodResolver(schema),
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: { name: "", email: "", service: "", message: "" },
   })
 
-  function onSubmit(values: FormValues) {
-    // Keep the form local until the project owner connects a submission endpoint.
-    void values
-    setSubmitted(true)
-  }
-
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+    <form
+      onSubmit={form.handleSubmit((values) => onSubmit(values, setSubmitted))}
+      className="space-y-5"
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="contact-name">{dictionary.name}</Label>
