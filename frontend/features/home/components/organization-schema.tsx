@@ -1,8 +1,9 @@
 import { faqContent } from "@/features/home/data/faq"
 import type { Locale } from "@/lib/i18n"
 import type { Dictionary } from "@/lib/i18n"
+import { siteConfig } from "@/lib/site"
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+const siteUrl = siteConfig.url
 
 // Structured data makes the agency, service categories and common answers explicit.
 export function OrganizationSchema({
@@ -15,9 +16,11 @@ export function OrganizationSchema({
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
     name: "RujuIt",
     description: dictionary.meta.description,
-    ...(siteUrl ? { url: siteUrl } : {}),
+    url: siteUrl,
+    sameAs: siteConfig.socialLinks.map((link) => link.href),
     logo: siteUrl
       ? new URL("/rujuit-logo.svg", siteUrl).toString()
       : "/rujuit-logo.svg",
@@ -47,6 +50,16 @@ export function OrganizationSchema({
     },
   }
 
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: "RujuIt",
+    url: siteUrl,
+    inLanguage: locale === "bn" ? "bn-BD" : "en",
+    publisher: { "@id": `${siteUrl}/#organization` },
+  }
+
   const faq = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -66,6 +79,12 @@ export function OrganizationSchema({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(organization).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(website).replace(/</g, "\\u003c"),
         }}
       />
       <script

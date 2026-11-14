@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { usePathname } from "next/navigation"
-import { ArrowUpRight, Menu, Phone } from "lucide-react"
+import { ArrowUpRight, Menu } from "lucide-react"
 import { motion } from "motion/react"
 
 import { Button } from "@/components/ui/button"
@@ -37,10 +37,6 @@ export function MobileNavigationSidebar({
 }: MobileNavigationSidebarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
 
   const enHref = pathname.replace(/^\/(en|bn)(?=\/|$)/, "/en")
   const bnHref = pathname.replace(/^\/(en|bn)(?=\/|$)/, "/bn")
@@ -98,9 +94,7 @@ export function MobileNavigationSidebar({
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => {
-                      if (pathname === link.href) setMenuOpen(false)
-                    }}
+                    onClick={() => setMenuOpen(false)}
                     aria-current={isActive ? "page" : undefined}
                     className={`group relative flex min-h-12 items-center justify-between border-b border-border/60 px-3 text-sm transition-colors duration-200 ${isActive ? "font-semibold text-primary" : "text-muted-foreground hover:text-primary"}`}
                   >

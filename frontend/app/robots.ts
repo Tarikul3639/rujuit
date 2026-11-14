@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next"
 
-// The production sitemap URL is emitted once NEXT_PUBLIC_SITE_URL is configured.
+import { siteConfig } from "@/lib/site"
+
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const siteUrl = siteConfig.url.replace(/\/$/, "")
 
   return {
     rules: { userAgent: "*", allow: "/" },
-    ...(siteUrl
-      ? { sitemap: `${siteUrl.replace(/\/$/, "")}/sitemap.xml` }
-      : {}),
+    sitemap: `${siteUrl}/sitemap.xml`,
   }
 }
