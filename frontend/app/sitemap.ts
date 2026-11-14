@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next"
 
+import { projects } from "@/features/work/data/projects"
+
 // Avoid publishing a placeholder domain; configure NEXT_PUBLIC_SITE_URL before launch.
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -8,18 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteUrl.replace(/\/$/, "")
   const lastModified = new Date()
 
-  return [
-    {
-      url: `${baseUrl}/en`,
+  const coreRoutes = ["en", "bn"].flatMap((locale) => [
+    { url: `${baseUrl}/${locale}`, lastModified, changeFrequency: "monthly" as const, priority: locale === "en" ? 1 : 0.9 },
+    { url: `${baseUrl}/${locale}/work`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
+  ])
+
+  const projectRoutes = ["en", "bn"].flatMap((locale) =>
+    projects.map((project) => ({
+      url: `${baseUrl}/${locale}/work/${project.slug}`,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/bn`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-  ]
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  )
+
+  return [...coreRoutes, ...projectRoutes]
 }

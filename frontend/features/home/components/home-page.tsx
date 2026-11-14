@@ -26,6 +26,7 @@ import { SiteHeader } from "@/components/layout/site-header"
 import { ContactForm } from "@/features/home/components/contact-form"
 import { FAQSection } from "@/features/home/components/faq-section"
 import { LocaleDocument } from "@/features/home/components/locale-document"
+import { FeaturedWork } from "@/features/work/components/featured-work"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
 
@@ -533,6 +534,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
         <SiteHeader locale={locale} dictionary={dictionary} />
         <HeroSection locale={locale} dictionary={dictionary} />
         <ServicesSection dictionary={dictionary} />
+        <FeaturedWork locale={locale} />
         <ApproachSection dictionary={dictionary} />
         <ProcessSection dictionary={dictionary} />
         <DifferenceSection dictionary={dictionary} />

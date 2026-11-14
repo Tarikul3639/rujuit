@@ -14,7 +14,7 @@ const dictionaries = {
     nav: {
       services: "Services",
       approach: "Approach",
-      work: "Why RujooIT",
+      work: "Selected work",
       contact: "Contact",
       book: "Book a call",
       language: "বাংলা",
@@ -196,7 +196,7 @@ const dictionaries = {
     nav: {
       services: "সার্ভিস",
       approach: "আমাদের পদ্ধতি",
-      work: "কেন RujooIT",
+      work: "নির্বাচিত কাজ",
       contact: "যোগাযোগ",
       book: "কল বুক করুন",
       language: "English",

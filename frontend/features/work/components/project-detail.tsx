@@ -1,0 +1,69 @@
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react"
+
+import { SiteFooter } from "@/components/layout/site-footer"
+import { SiteHeader } from "@/components/layout/site-header"
+import { LocaleDocument } from "@/features/home/components/locale-document"
+import { projects, type PortfolioProject } from "@/features/work/data/projects"
+import { getWorkCopy } from "@/features/work/data/copy"
+import type { Dictionary, Locale } from "@/lib/i18n"
+
+export function ProjectDetail({ project, locale, dictionary }: { project: PortfolioProject; locale: Locale; dictionary: Dictionary }) {
+  const copy = getWorkCopy(locale)
+  const index = projects.findIndex((item) => item.slug === project.slug)
+  const previous = projects[(index - 1 + projects.length) % projects.length]
+  const next = projects[(index + 1) % projects.length]
+  const translated = copy.projects[project.slug as keyof typeof copy.projects]
+
+  return (
+    <>
+      <LocaleDocument locale={locale} />
+      <main lang={locale === "bn" ? "bn-BD" : "en"} className={locale === "bn" ? "locale-bn min-h-screen" : "locale-en min-h-screen"}>
+        <SiteHeader locale={locale} dictionary={dictionary} />
+        <section className="relative overflow-hidden border-b border-border py-20 sm:py-28">
+          <div className="site-grid absolute inset-0 opacity-45" />
+          <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+            <Link href={`/${locale}/work`} className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground transition-colors hover:text-primary"><ArrowLeft className="size-4" /> {copy.index.back}</Link>
+            <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.42fr] lg:items-end">
+              <div><p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">{project.category.toUpperCase()} / {project.year}</p><h1 className="font-display mt-5 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl">{project.title}</h1><p className="mt-7 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">{translated.summary}</p></div>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                {project.live && <a href={project.live} target="_blank" rel="noreferrer" className="inline-flex h-12 items-center gap-3 bg-primary px-5 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-1">{copy.index.live}<ExternalLink className="size-4" /></a>}
+                {project.repos.map((repo) => <a key={repo.href} href={repo.href} target="_blank" rel="noreferrer" className="inline-flex h-12 items-center gap-2 border border-border px-4 text-sm font-semibold transition-colors hover:border-primary">{repo.label}<ArrowUpRight className="size-4 text-primary" /></a>)}
+              </div>
+            </div>
+            <div className="mt-16 relative aspect-[16/9] overflow-hidden border border-border bg-muted">
+              {project.image ? <Image src={project.image} alt={`${project.title} full project screenshot`} fill priority sizes="(max-width: 1024px) 100vw, 90vw" className="object-cover" /> : <div className="flex h-full items-center justify-center font-display text-7xl font-black text-primary">{project.monogram}</div>}
+              <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-3 font-code text-[9px] tracking-[0.2em] backdrop-blur">RUJOOIT / ENGINEERING ARCHIVE / {String(index + 1).padStart(2, "0")}</div>
+            </div>
+          </div>
+        </section>
+        <section className="mx-auto grid max-w-[1440px] gap-16 px-5 py-20 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:px-12 lg:py-28">
+          <aside className="space-y-9">
+            <div className="border-t border-border pt-5"><p className="font-code text-[10px] tracking-[0.2em] text-primary">{copy.index.role}</p><p className="mt-3 text-sm font-semibold">{project.role}</p></div>
+            <div className="border-t border-border pt-5"><p className="font-code text-[10px] tracking-[0.2em] text-primary">{copy.index.year}</p><p className="mt-3 text-sm font-semibold">{project.year}</p></div>
+            <div className="border-t border-border pt-5"><p className="font-code text-[10px] tracking-[0.2em] text-primary">{copy.index.category}</p><p className="mt-3 text-sm font-semibold">{project.category}</p></div>
+            <div className="border-t border-border pt-5"><p className="font-code text-[10px] tracking-[0.2em] text-primary">{copy.index.stack}</p><div className="mt-4 flex flex-wrap gap-2">{project.stack.map((tag) => <span key={tag} className="border border-border px-2.5 py-1.5 font-code text-[10px] text-muted-foreground">{tag}</span>)}</div></div>
+          </aside>
+          <div>
+            <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">01 / {copy.index.overview}</p>
+            <h2 className="font-display mt-5 text-3xl leading-tight font-bold tracking-[-0.05em] sm:text-4xl">{project.title}</h2>
+            <p className="mt-6 text-base leading-8 text-muted-foreground">{translated.description}</p>
+            <div className="mt-16 border-t border-border pt-8"><p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">02 / {copy.index.highlights}</p><div className="mt-7 space-y-0">{translated.highlights.map((highlight, itemIndex) => <div key={highlight} className="flex gap-5 border-b border-border py-5"><span className="font-code text-xs text-primary">0{itemIndex + 1}</span><p className="max-w-2xl text-sm leading-7">{highlight}</p></div>)}</div></div>
+          </div>
+        </section>
+        <section className="border-y border-border bg-muted/20 py-16 sm:py-20">
+          <div className="mx-auto flex max-w-[1440px] flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+            <div><p className="font-code text-[10px] tracking-[0.2em] text-primary">RUJOOIT / NEXT BUILD</p><h2 className="font-display mt-4 text-3xl font-bold tracking-[-0.05em] sm:text-4xl">{copy.index.discuss}</h2><p className="mt-3 text-sm text-muted-foreground">{copy.index.discussText}</p></div>
+            <Link href={`/${locale}/contact`} className="inline-flex h-12 shrink-0 items-center justify-center gap-3 border border-primary px-5 text-sm font-bold transition-colors hover:bg-primary hover:text-primary-foreground">{copy.index.contact}<ArrowUpRight className="size-4" /></Link>
+          </div>
+        </section>
+        <nav aria-label="Project navigation" className="mx-auto grid max-w-[1440px] grid-cols-2 gap-4 px-5 py-12 sm:px-8 lg:px-12">
+          <Link href={`/${locale}/work/${previous.slug}`} className="group border border-border p-5 transition-colors hover:border-primary sm:p-7"><span className="flex items-center gap-2 font-code text-[9px] tracking-widest text-muted-foreground"><ArrowLeft className="size-3" /> {copy.index.previous}</span><span className="mt-4 block font-display text-lg font-bold sm:text-2xl">{previous.title}</span></Link>
+          <Link href={`/${locale}/work/${next.slug}`} className="group border border-border p-5 text-right transition-colors hover:border-primary sm:p-7"><span className="flex items-center justify-end gap-2 font-code text-[9px] tracking-widest text-muted-foreground">{copy.index.next} <ArrowRight className="size-3" /></span><span className="mt-4 block font-display text-lg font-bold sm:text-2xl">{next.title}</span></Link>
+        </nav>
+        <SiteFooter locale={locale} dictionary={dictionary} />
+      </main>
+    </>
+  )
+}
