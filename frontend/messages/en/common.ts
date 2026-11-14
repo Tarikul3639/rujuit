@@ -6,10 +6,12 @@ export const commonDictionary = {
       "RujuIt engineers scalable web platforms, cloud infrastructure, API integrations, MCP servers and intelligent automation for ambitious businesses.",
   },
   nav: {
+    home: "Home",
     services: "Services",
     approach: "About",
     work: "Selected work",
     contact: "Contact",
+    policies: "Policies",
     book: "Book a call",
     language: "বাংলা",
   },
@@ -21,5 +23,6 @@ export const commonDictionary = {
     connect: "Start a conversation",
     rights: "All rights reserved.",
     top: "Back to top",
+    policies: "Policies & Privacy",
   },
 } as const

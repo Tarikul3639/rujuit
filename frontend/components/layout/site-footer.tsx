@@ -2,12 +2,18 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowUpRight, MessageCircle } from "lucide-react"
+import { ArrowRight, ArrowUpRight } from "lucide-react"
 import { motion } from "motion/react"
+import { FacebookIcon } from "@/components/icons/FacebookIcon"
 import { useReveal } from "@/lib/use-reveal"
+import { InstagramIcon } from "@/components/icons/InstagramIcon"
+import { LinkedInIcon } from "@/components/icons/LinkedInIcon"
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon"
 
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
+
+const MotionLink = motion(Link)
 
 type SiteFooterProps = {
   locale: Locale
@@ -39,8 +45,8 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                 className="font-display text-xl font-extrabold tracking-[-0.07em]"
               >
                 Ruju
-                <motion.span {...reveal()} className="text-primary">
-                  It
+                <motion.span {...reveal()} className="text-primary uppercase">
+                  IT
                 </motion.span>
               </motion.span>
             </Link>
@@ -66,24 +72,51 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               01 / {dictionary.footer.links}
             </motion.p>
             <div className="flex flex-col items-start gap-3 text-sm text-muted-foreground">
-              <Link
-                href={`/${locale}/services`}
-                className="hover:text-foreground"
-              >
-                {dictionary.nav.services}
-              </Link>
-              <Link href={`/${locale}/about`} className="hover:text-foreground">
-                {dictionary.nav.approach}
-              </Link>
-              <Link href={`/${locale}/work`} className="hover:text-foreground">
-                {dictionary.nav.work}
-              </Link>
-              <Link
-                href={`/${locale}/contact`}
-                className="hover:text-foreground"
-              >
-                {dictionary.nav.contact}
-              </Link>
+              {[
+                { href: `/${locale}/services`, label: dictionary.nav.services },
+                { href: `/${locale}/about`, label: dictionary.nav.approach },
+                { href: `/${locale}/work`, label: dictionary.nav.work },
+                { href: `/${locale}/contact`, label: dictionary.nav.contact },
+                {
+                  href: `/${locale}/policies`,
+                  label: dictionary.footer.policies,
+                },
+              ].map((item, index) => (
+                <MotionLink
+                  key={item.href}
+                  href={item.href}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  whileFocus="hover"
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  variants={{
+                    hidden: { opacity: 0, y: 18, x: 0 },
+                    visible: { opacity: 1, y: 0, x: 0 },
+                    hover: { opacity: 1, y: 0, x: 5 },
+                  }}
+                  className="group inline-flex items-center gap-2 transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+                >
+                  <motion.span
+                    variants={{
+                      hidden: { opacity: 0, x: -5 },
+                      visible: { opacity: 0, x: -5 },
+                      hover: { opacity: 1, x: 0 },
+                    }}
+                    transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                    className="inline-flex items-center text-primary"
+                    aria-hidden="true"
+                  >
+                    <ArrowRight className="size-3" strokeWidth={2.5} />
+                  </motion.span>
+                  {item.label}
+                </MotionLink>
+              ))}
             </div>
           </div>
 
@@ -107,16 +140,13 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                     className="inline-flex size-10 items-center justify-center border border-border text-xs font-bold text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                   >
                     {social.label === "WhatsApp" ? (
-                      <MessageCircle className="size-4" aria-hidden="true" />
+                      <WhatsAppIcon className="size-4" />
+                    ) : social.label === "LinkedIn" ? (
+                      <LinkedInIcon className="size-4" />
+                    ) : social.label === "Instagram" ? (
+                      <InstagramIcon className="size-4" />
                     ) : (
-                      <motion.span {...reveal()} aria-hidden="true">
-                        {
-                          { LinkedIn: "in", Facebook: "f", Instagram: "◎" }[
-                            social.label as
-                              "LinkedIn" | "Facebook" | "Instagram"
-                          ]
-                        }
-                      </motion.span>
+                      <FacebookIcon className="size-4" />
                     )}
                   </a>
                 ))}

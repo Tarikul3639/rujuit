@@ -6,10 +6,12 @@ export const commonDictionary = {
       "RujuIt তৈরি করে স্কেলেবল ওয়েব প্ল্যাটফর্ম, ক্লাউড ইনফ্রাস্ট্রাকচার, API ইন্টিগ্রেশন, MCP সার্ভার এবং ইন্টেলিজেন্ট অটোমেশন।",
   },
   nav: {
+    home: "হোম",
     services: "সার্ভিস",
     approach: "আমাদের সম্পর্কে",
     work: "নির্বাচিত কাজ",
     contact: "যোগাযোগ",
+    policies: "নীতিমালা",
     book: "কল বুক করুন",
     language: "English",
   },
@@ -21,5 +23,6 @@ export const commonDictionary = {
     connect: "কথা শুরু করুন",
     rights: "সর্বস্বত্ব সংরক্ষিত।",
     top: "উপরে ফিরে যান",
+    policies: "নীতিমালা ও গোপনীয়তা",
   },
 } as const

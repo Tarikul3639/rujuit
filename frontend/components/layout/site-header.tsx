@@ -2,13 +2,14 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
-import { ArrowUpRight, Menu, X } from "lucide-react"
-import { AnimatePresence, motion } from "motion/react"
+import { usePathname } from "next/navigation"
+import { ArrowUpRight } from "lucide-react"
+import { motion } from "motion/react"
 import { useReveal } from "@/lib/use-reveal"
 
 import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { Button } from "@/components/ui/button"
+import { MobileNavigationSidebar } from "@/components/layout/mobile-sidebar"
 import { siteConfig } from "@/lib/site"
 import type { Dictionary, Locale } from "@/lib/i18n"
 
@@ -19,7 +20,9 @@ type SiteHeaderProps = {
 
 // Shared navigation keeps the main links and booking action consistent across pages.
 export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const enHref = pathname.replace(/^\/(en|bn)(?=\/|$)/, "/en")
+  const bnHref = pathname.replace(/^\/(en|bn)(?=\/|$)/, "/bn")
   const links = [
     { label: dictionary.nav.services, href: `/${locale}/services` },
     { label: dictionary.nav.approach, href: `/${locale}/about` },
@@ -30,7 +33,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   const reveal = useReveal()
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-linear-to-r from-primary/10 via-background/85 to-primary/10 backdrop-blur-xl">
       <div className="mx-auto flex h-19 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link
           href={`/${locale}`}
@@ -47,10 +50,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           />
           <motion.span
             {...reveal()}
-            className="font-display text-[1.35rem] font-extrabold tracking-[-0.07em]"
+            className="font-display text-[1.35rem] font-extrabold tracking-tighter!"
           >
-            ruju
-            <motion.span {...reveal()} className="text-primary">
+            Ruju
+            <motion.span {...reveal()} className="text-primary uppercase">
               IT
             </motion.span>
           </motion.span>
@@ -58,94 +61,90 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-8 lg:flex"
+          className="hidden items-center gap-1 lg:flex"
         >
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive =
+              pathname === link.href || pathname.startsWith(`${link.href}/`)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`group relative px-4 py-3 text-xs font-medium transition-colors duration-200 ${isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                <span className="relative z-10">{link.label}</span>
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-4 bottom-1 h-px origin-center bg-primary transition-transform duration-300 ease-out ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                />
+              </Link>
+            )
+          })}
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Link
-            href={locale === "en" ? "/bn" : "/en"}
-            className="px-2 text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Change language"
+          <div className="inline-flex items-center border border-border bg-muted/30 p-0.5">
+            <div aria-label="Language" className="inline-flex items-center pl-2 pr-1">
+              <Link
+                href={enHref}
+                hrefLang="en"
+                aria-current={locale === "en" ? "page" : undefined}
+                aria-label="English"
+                className={`font-code relative isolate rounded-xs px-2 py-1 text-[9px] font-bold tracking-wide transition-colors duration-200 ${locale === "en" ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                {locale === "en" && (
+                  <motion.span
+                    layoutId="desktop-language-indicator"
+                    aria-hidden="true"
+                    className="absolute inset-0 -z-10 rounded-xs bg-primary"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )}
+                EN
+              </Link>
+              <Link
+                href={bnHref}
+                hrefLang="bn"
+                aria-current={locale === "bn" ? "page" : undefined}
+                aria-label="বাংলা"
+                className={`font-code relative isolate rounded-xs px-2 py-1 text-[9px] font-bold tracking-wide transition-colors duration-200 ${locale === "bn" ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                {locale === "bn" && (
+                  <motion.span
+                    layoutId="desktop-language-indicator"
+                    aria-hidden="true"
+                    className="absolute inset-0 -z-10 rounded-xs bg-primary"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )}
+                বাংলা
+              </Link>
+            </div>
+            <span aria-hidden="true" className="mx-1 h-4 w-px bg-border" />
+            <ThemeToggle />
+          </div>
+          <Button
+            asChild
+            className="group relative h-10 overflow-hidden rounded-none border-2 border-primary bg-primary px-4 text-xs font-black tracking-wider text-primary-foreground shadow-[3px_3px_0px_var(--foreground)] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-primary hover:shadow-[5px_5px_0px_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
           >
-            {dictionary.nav.language}
-          </Link>
-          <ThemeToggle />
-          <Button asChild className="h-10 rounded-md px-4 text-xs font-bold">
             <a href={siteConfig.calUrl} target="_blank" rel="noreferrer">
-              {dictionary.nav.book}
-              <ArrowUpRight className="ml-1 size-4" />
+              <span className="relative z-10">{dictionary.nav.book}</span>
+              <ArrowUpRight className="relative z-10 ml-1 size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <span aria-hidden="true" className="absolute right-0 top-0 size-2 border-l border-b border-primary-foreground/70" />
             </a>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
-          <Button
-            variant="outline"
-            size="icon"
-            className="size-9 rounded-md"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
-          </Button>
+          <MobileNavigationSidebar
+            locale={locale}
+            dictionary={dictionary}
+            links={links}
+          />
         </div>
       </div>
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
-            className="overflow-hidden border-t border-border bg-background lg:hidden"
-            aria-label="Mobile navigation"
-          >
-            <div className="flex flex-col gap-1 px-5 py-4 sm:px-8">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="flex min-h-11 items-center justify-between border-b border-border/70 text-sm font-medium"
-                >
-                  {link.label}
-                  <ArrowUpRight className="size-4 text-muted-foreground" />
-                </Link>
-              ))}
-              <div className="flex items-center justify-between pt-4">
-                <Link
-                  href={locale === "en" ? "/bn" : "/en"}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-sm font-semibold text-primary"
-                >
-                  {dictionary.nav.language}
-                </Link>
-                <a
-                  href={siteConfig.calUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-bold"
-                >
-                  {dictionary.nav.book}
-                  <ArrowUpRight className="size-4 text-primary" />
-                </a>
-              </div>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
     </header>
   )
 }

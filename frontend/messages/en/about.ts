@@ -4,6 +4,38 @@ export const aboutCopy = {
   title: "We turn complex technology into clear digital capability.",
   intro:
     "RujuIt is a software engineering agency focused on building thoughtful digital products, connected systems and practical automation.",
+  foundersEyebrow: "THE PEOPLE BEHIND RUJUIT",
+  foundersTitle: "Two builders. One engineering vision.",
+  foundersIntro:
+    "RujuIt is founded by two technology enthusiasts bringing complementary interests in software engineering and intelligent systems.",
+  founders: [
+    {
+      name: "Tarikul Islam",
+      role: "Co-Founder · Software Engineer",
+      bio: "A software engineer focused on building full-stack digital products, developer tools and connected systems. Leads product engineering and the technical direction behind RujuIt.",
+      focus: [
+        "Full-Stack Development",
+        "Backend & APIs",
+        "MCP & Developer Tools",
+      ],
+      initials: "TI",
+      primaryUrl: "https://github.com/Tarikul3639",
+      primaryLabel: "GitHub",
+      secondaryUrl: "https://www.tarikul-islam.me",
+      secondaryLabel: "Website",
+    },
+    {
+      name: "Sultan Ahmmed",
+      role: "Co-Founder · AI & Computer Vision",
+      bio: "A final-year Computer Science & Engineering student at BUBT with interests in computer vision, robotics and intelligent systems. Explores applied AI through hands-on projects and experimentation.",
+      focus: ["Computer Vision", "AI & Machine Learning", "Robotics & IoT"],
+      initials: "SA",
+      primaryUrl: "https://bd.linkedin.com/in/sultan-ahmmed",
+      primaryLabel: "LinkedIn",
+      secondaryUrl: "",
+      secondaryLabel: "",
+    },
+  ],
   mission: "Our point of view",
   missionTitle:
     "Technology should solve the right problem, not add another layer of complexity.",

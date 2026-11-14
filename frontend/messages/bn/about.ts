@@ -4,6 +4,38 @@ export const aboutCopy = {
   title: "জটিল প্রযুক্তিকে সহজ ও কার্যকর ডিজিটাল সক্ষমতায় রূপ দিই।",
   intro:
     "RujuIt একটি software engineering agency। আমরা পরিকল্পিত digital product, connected system এবং ব্যবহারিক automation তৈরি করি।",
+  foundersEyebrow: "RUJUIT-এর পেছনের মানুষ",
+  foundersTitle: "দুইজন নির্মাতা। একটি engineering vision।",
+  foundersIntro:
+    "RujuIt প্রতিষ্ঠা করেছে প্রযুক্তিপ্রেমী দুইজন—যাদের software engineering ও intelligent systems নিয়ে রয়েছে পরিপূরক আগ্রহ।",
+  founders: [
+    {
+      name: "Tarikul Islam",
+      role: "Co-Founder · Software Engineer",
+      bio: "একজন software engineer, যিনি full-stack digital product, developer tools এবং connected system তৈরিতে মনোযোগী। RujuIt-এর product engineering ও technical direction পরিচালনা করেন।",
+      focus: [
+        "Full-Stack Development",
+        "Backend ও API",
+        "MCP ও Developer Tools",
+      ],
+      initials: "TI",
+      primaryUrl: "https://github.com/Tarikul3639",
+      primaryLabel: "GitHub",
+      secondaryUrl: "https://www.tarikul-islam.me",
+      secondaryLabel: "Website",
+    },
+    {
+      name: "Sultan Ahmmed",
+      role: "Co-Founder · AI ও Computer Vision",
+      bio: "BUBT-এর Computer Science & Engineering বিভাগের final-year শিক্ষার্থী। Computer vision, robotics ও intelligent systems নিয়ে আগ্রহী এবং hands-on project-এর মাধ্যমে applied AI নিয়ে কাজ করেন।",
+      focus: ["Computer Vision", "AI ও Machine Learning", "Robotics ও IoT"],
+      initials: "SA",
+      primaryUrl: "https://bd.linkedin.com/in/sultan-ahmmed",
+      primaryLabel: "LinkedIn",
+      secondaryUrl: "",
+      secondaryLabel: "",
+    },
+  ],
   mission: "আমাদের দৃষ্টিভঙ্গি",
   missionTitle: "প্রযুক্তির কাজ সঠিক সমস্যার সমাধান করা, জটিলতা বাড়ানো নয়।",
   missionBody:
