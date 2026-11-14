@@ -45,7 +45,10 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               01 / {dictionary.footer.links}
             </p>
             <div className="flex flex-col items-start gap-3 text-sm text-muted-foreground">
-              <Link href={`/${locale}/services`} className="hover:text-foreground">
+              <Link
+                href={`/${locale}/services`}
+                className="hover:text-foreground"
+              >
                 {dictionary.nav.services}
               </Link>
               <Link href={`/${locale}/about`} className="hover:text-foreground">
@@ -54,7 +57,10 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
               <Link href={`/${locale}/work`} className="hover:text-foreground">
                 {dictionary.nav.work}
               </Link>
-              <Link href={`/${locale}/contact`} className="hover:text-foreground">
+              <Link
+                href={`/${locale}/contact`}
+                className="hover:text-foreground"
+              >
                 {dictionary.nav.contact}
               </Link>
             </div>
@@ -88,7 +94,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <span>
-            © {new Date().getFullYear()} RujooIT. {dictionary.footer.rights}
+            © {new Date().getFullYear()} RujuIt. {dictionary.footer.rights}
           </span>
           <span className="font-code tracking-wide">
             ENGINEERED WITH INTENT.

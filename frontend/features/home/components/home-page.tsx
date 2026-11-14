@@ -162,7 +162,7 @@ function HeroSection({ dictionary, locale }: HomePageProps) {
                 <Zap className="size-4 text-primary sm:size-5" />
               </div>
               <span className="font-code absolute bottom-3 left-3 text-[8px] tracking-[0.16em] text-muted-foreground sm:bottom-7 sm:left-7 sm:text-[9px]">
-                RUJOOIT / SYSTEMS
+                RUJUIT / SYSTEMS
               </span>
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-2 sm:gap-x-5">
@@ -248,7 +248,7 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                     </span>
                   ))}
                 </div>
-                <h3 className="font-display text-3xl font-bold tracking-[-0.05em] sm:text-4xl">
+                <h3 className="font-display text-3xl font-bold tracking-tighter sm:text-4xl">
                   {dictionary.nav.services}
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-7 text-white/70">
@@ -336,7 +336,7 @@ function ExploreSection({ locale, dictionary }: HomePageProps) {
                 <span className="font-code text-[9px] font-semibold tracking-[0.2em] text-black/65">
                   05 / {dictionary.explore.buildEyebrow}
                 </span>
-                <h3 className="font-display mt-5 text-3xl leading-tight font-extrabold tracking-[-0.05em] sm:text-4xl">
+                <h3 className="font-display mt-5 text-3xl leading-tight font-extrabold tracking-tighter sm:text-4xl">
                   {dictionary.explore.buildTitle}
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-7 text-black/70">
@@ -378,7 +378,7 @@ function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
         <div className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(([number, title, description], index) => (
             <Reveal key={number} delay={index * 0.06} className="h-full">
-              <article className="flex h-full min-h-[220px] flex-col bg-background p-6 sm:p-7">
+              <article className="flex h-full min-h-55 flex-col bg-background p-6 sm:p-7">
                 <span className="font-code text-xs tracking-widest text-primary">{number} / 04</span>
                 <h3 className="font-display mt-10 text-xl font-bold tracking-tight">{title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{description}</p>
@@ -457,7 +457,7 @@ function BookingSection({ dictionary }: { dictionary: Dictionary }) {
   return (
     <section className="px-5 pb-20 sm:px-8 sm:pb-24 lg:px-12">
       <div className="relative mx-auto max-w-[1440px] overflow-hidden border border-primary/40 bg-primary px-6 py-10 text-black sm:px-10 sm:py-14 lg:px-16 lg:py-16">
-        <div className="pointer-events-none absolute -right-16 -bottom-40 size-[360px] rotate-12 border border-black/15 sm:-right-5 sm:size-[460px]" />
+        <div className="pointer-events-none absolute -right-16 -bottom-40 size-[360px] rotate-12 border border-black/15 sm:-right-5 sm:size-115" />
         <div className="pointer-events-none absolute -right-2 -bottom-28 size-[260px] -rotate-12 border border-black/15 sm:size-[340px]" />
         <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-3xl">

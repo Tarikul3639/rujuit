@@ -1,7 +1,7 @@
 // Homepage-specific copy; feature pages own their detailed copy.
 export const homeDictionary = {
   explore: {
-    eyebrow: "EXPLORE RUJOOIT",
+    eyebrow: "EXPLORE RUJUIT",
     title: "Find the right direction for your next move.",
     description: "Explore each area in depth on its dedicated page.",
     servicesDescription: "Web, cloud, APIs, MCP and AI—explore the full range of our engineering capabilities.",
@@ -20,7 +20,7 @@ export const homeDictionary = {
   },
   principles: {
     eyebrow: "HOW WE THINK",
-    delivery: "RUJOOIT / DELIVERY",
+    delivery: "RUJUIT / DELIVERY",
   },
   booking: {
     eyebrow: "LET'S TALK",
@@ -144,7 +144,7 @@ export const homeDictionary = {
     ],
   },
   work: {
-    eyebrow: "THE RUJOOIT DIFFERENCE",
+    eyebrow: "THE RUJUIT DIFFERENCE",
     title: "A partner who thinks beyond the launch.",
     description:
       "The right technology should make your next step easier — not create another problem to manage.",

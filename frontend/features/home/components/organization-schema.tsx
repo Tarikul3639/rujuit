@@ -15,7 +15,7 @@ export function OrganizationSchema({
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "RujooIT",
+    name: "RujuIt",
     description: dictionary.meta.description,
     ...(siteUrl ? { url: siteUrl } : {}),
     logo: siteUrl
@@ -41,7 +41,7 @@ export function OrganizationSchema({
           "@type": "Service",
           name: service.title,
           description: service.description,
-          provider: { "@type": "Organization", name: "RujooIT" },
+          provider: { "@type": "Organization", name: "RujuIt" },
         },
       })),
     },

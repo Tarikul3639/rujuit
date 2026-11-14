@@ -1,7 +1,7 @@
 import { env } from "@/config/env"
 
 export const siteConfig = {
-  name: "RujooIT",
+  name: "RujuIt",
   tagline: "Engineering Digital Possibilities.",
   url: env.NEXT_PUBLIC_SITE_URL,
   calUrl: env.NEXT_PUBLIC_CAL_URL,

@@ -20,7 +20,7 @@ export const homeDictionary = {
   },
   principles: {
     eyebrow: "আমাদের কাজের নীতি",
-    delivery: "RUJOOIT / DELIVERY",
+    delivery: "RUJUIT / DELIVERY",
   },
   booking: {
     eyebrow: "চলুন কথা বলি",
@@ -144,7 +144,7 @@ export const homeDictionary = {
     ],
   },
   work: {
-    eyebrow: "কেন RUJOOIT",
+    eyebrow: "কেন RUJUIT",
     title: "যে পার্টনার লঞ্চের পরের ধাপও ভাবে।",
     description:
       "সঠিক প্রযুক্তি আপনার পরবর্তী পদক্ষেপ সহজ করবে—নতুন কোনো সমস্যা তৈরি করবে না।",

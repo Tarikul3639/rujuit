@@ -61,14 +61,14 @@ const siteUrl = env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
   title: {
-    default: "RujooIT — Engineering Digital Possibilities",
-    template: "%s | RujooIT",
+    default: "RujuIt — Engineering Digital Possibilities",
+    template: "%s | RujuIt",
   },
   description:
-    "RujooIT is a software engineering partner building scalable web platforms, cloud infrastructure, API integrations, MCP servers and intelligent automation.",
-  applicationName: "RujooIT",
+    "RujuIt is a software engineering partner building scalable web platforms, cloud infrastructure, API integrations, MCP servers and intelligent automation.",
+  applicationName: "RujuIt",
   keywords: [
-    "RujooIT",
+    "RujuIt",
     "software engineering agency",
     "web development",
     "cloud engineering",
@@ -77,23 +77,23 @@ export const metadata: Metadata = {
     "AI automation",
     "custom software",
   ],
-  authors: [{ name: "RujooIT" }],
-  creator: "RujooIT",
-  publisher: "RujooIT",
+  authors: [{ name: "RujuIt" }],
+  creator: "RujuIt",
+  publisher: "RujuIt",
   alternates: {
     languages: { en: "/en", bn: "/bn" },
   },
   openGraph: {
     type: "website",
-    siteName: "RujooIT",
-    title: "RujooIT — Engineering Digital Possibilities",
+    siteName: "RujuIt",
+    title: "RujuIt — Engineering Digital Possibilities",
     description:
       "Reliable, scalable and intelligent software solutions for ambitious businesses.",
     ...(siteUrl ? { images: ["/images/og-cover.svg"] } : {}),
   },
   twitter: {
     card: "summary_large_image",
-    title: "RujooIT — Engineering Digital Possibilities",
+    title: "RujuIt — Engineering Digital Possibilities",
     description:
       "Reliable, scalable and intelligent software solutions for ambitious businesses.",
     ...(siteUrl ? { images: ["/images/og-cover.svg"] } : {}),

@@ -32,7 +32,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
         <Link
           href={`/${locale}`}
           className="group flex items-center gap-3"
-          aria-label="RujooIT home"
+          aria-label="RujuIt home"
         >
           <Image
             src="/rujooit-logo.svg"
