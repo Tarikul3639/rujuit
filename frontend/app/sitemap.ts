@@ -1,13 +1,11 @@
 import type { MetadataRoute } from "next"
 
 import { projects } from "@/features/work/data/projects"
+import { siteConfig } from "@/lib/site"
 
 // Avoid publishing a placeholder domain; configure NEXT_PUBLIC_SITE_URL before launch.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-  if (!siteUrl) return []
-
-  const baseUrl = siteUrl.replace(/\/$/, "")
+  const baseUrl = siteConfig.url.replace(/\/$/, "")
   const lastModified = new Date()
 
   const coreRoutes = ["en", "bn"].flatMap((locale) => [

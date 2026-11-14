@@ -23,6 +23,7 @@ export function WorkListing({ locale, dictionary }: { locale: Locale; dictionary
             <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">01 / {copy.index.eyebrow}</p>
             <h1 className="font-display mt-6 max-w-4xl text-5xl leading-[1.02] font-extrabold tracking-[-0.065em] text-balance sm:text-7xl">{copy.index.title}</h1>
             <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">{copy.index.description}</p>
+            <p className="mt-4 max-w-2xl border-l border-primary/60 pl-4 text-xs leading-6 text-muted-foreground">{copy.index.note}</p>
             <div className="mt-10 flex items-center gap-3 font-code text-[10px] tracking-widest text-muted-foreground"><span className="h-px w-12 bg-primary" /> {String(projects.length).padStart(2, "0")} PROJECTS / ENGINEERING LOG</div>
           </div>
         </section>
