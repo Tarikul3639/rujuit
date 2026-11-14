@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { z } from "zod"
 import { ArrowUpRight, CheckCircle2 } from "lucide-react"
 
@@ -10,6 +10,13 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import type { Dictionary } from "@/lib/i18n"
 
 type ContactFormProps = {
@@ -72,18 +79,30 @@ export function ContactForm({ dictionary }: ContactFormProps) {
 
       <div className="space-y-2">
         <Label htmlFor="contact-service">{dictionary.service}</Label>
-        <select
-          id="contact-service"
-          {...form.register("service")}
-          className="h-12 w-full rounded-md border border-input bg-background/70 px-3 text-sm transition-colors outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-        >
-          <option value="">—</option>
-          {dictionary.options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <Controller
+          control={form.control}
+          name="service"
+          render={({ field }) => (
+            <Select value={field.value} onValueChange={field.onChange}>
+              <SelectTrigger
+                id="contact-service"
+                ref={field.ref}
+                onBlur={field.onBlur}
+                aria-invalid={Boolean(form.formState.errors.service)}
+                className="h-12 w-full rounded-md bg-background/70 px-3 text-sm"
+              >
+                <SelectValue placeholder="—" />
+              </SelectTrigger>
+              <SelectContent>
+                {dictionary.options.map((option) => (
+                  <SelectItem key={option} value={option}>
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
         {form.formState.errors.service && (
           <p className="text-xs text-destructive">{dictionary.error}</p>
         )}
