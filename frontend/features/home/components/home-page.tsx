@@ -9,9 +9,6 @@ import {
   Braces,
   Cloud,
   Code2,
-  Cpu,
-  Database,
-  GitBranch,
   Layers3,
   Network,
   Workflow,
@@ -23,11 +20,7 @@ import { FlipWords } from "@/components/ui/flip-words"
 import { Spotlight } from "@/components/ui/spotlight"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
-import { ContactForm } from "@/features/home/components/contact-form"
-import { FAQSection } from "@/features/home/components/faq-section"
 import { LocaleDocument } from "@/features/home/components/locale-document"
-import { FeaturedWork } from "@/features/work/components/featured-work"
-import { serviceSlugs } from "@/features/services/data/services"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
 
@@ -38,7 +31,7 @@ type HomePageProps = {
 
 const serviceIcons = [Code2, Cloud, Network, Braces, Workflow, Layers3]
 
-// Reusable reveal motion respects visitors who prefer reduced motion.
+// Motion is applied to individual content elements so each section remains stable while scrolling.
 function Reveal({
   children,
   delay = 0,
@@ -52,10 +45,10 @@ function Reveal({
 
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: false, amount: 0.18 }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -63,38 +56,34 @@ function Reveal({
   )
 }
 
-// The hero combines a clear service statement with an original, lightweight systems illustration.
 function HeroSection({ dictionary, locale }: HomePageProps) {
   const hero = dictionary.hero
 
   return (
     <section className="relative isolate overflow-hidden border-b border-border">
       <div className="site-grid absolute inset-0 -z-20 opacity-70" />
-      <div className="absolute top-0 -right-40 -z-10 size-[520px] rounded-full bg-primary/10 blur-[130px]" />
+      <div className="absolute -top-28 -right-36 -z-10 size-[min(80vw,520px)] rounded-full bg-primary/10 blur-[110px]" />
       <Spotlight className="-top-40 left-0 md:left-40" fill="#FACC15" />
 
-      <div className="mx-auto grid min-h-[690px] max-w-[1440px] items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-12 lg:py-24">
-        <div className="relative z-10 max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-7 inline-flex items-center gap-3 border border-primary/30 bg-primary/5 px-3 py-2"
-          >
-            <span className="size-2 animate-pulse bg-primary" />
-            <span className="font-code text-[10px] font-semibold tracking-[0.18em] text-primary">
-              {hero.eyebrow}
-            </span>
-          </motion.div>
+      <div className="mx-auto grid w-full max-w-[1440px] items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:min-h-[680px] lg:grid-cols-[1.02fr_0.98fr] lg:gap-8 lg:px-12 lg:py-20">
+        <div className="relative z-10 min-w-0 max-w-2xl">
+          <Reveal>
+            <div className="mb-6 inline-flex max-w-full items-center gap-3 border border-primary/30 bg-primary/5 px-3 py-2">
+              <span className="size-2 shrink-0 animate-pulse bg-primary" />
+              <span className="font-code text-[9px] font-semibold tracking-[0.13em] text-primary sm:text-[10px] sm:tracking-[0.18em]">
+                {hero.eyebrow}
+              </span>
+            </div>
+          </Reveal>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08 }}
-            className="font-display text-[clamp(2.8rem,6vw,5.8rem)] leading-[0.99] font-extrabold tracking-[-0.065em] text-balance"
+            transition={{ duration: 0.6, delay: 0.06 }}
+            className="font-display max-w-[14ch] text-[clamp(2.65rem,7.1vw,6rem)] leading-[1.02] font-extrabold tracking-[-0.065em] text-balance"
           >
             {hero.titleStart}
-            <span className="mt-1 block min-h-[1.05em] text-primary">
+            <span className="mt-1 block min-h-[1.08em] text-primary">
               <FlipWords
                 words={[...hero.rotating]}
                 duration={2800}
@@ -104,100 +93,95 @@ function HeroSection({ dictionary, locale }: HomePageProps) {
             <span className="mt-1 block">{hero.titleEnd}</span>
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.2 }}
-            className="mt-7 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg"
-          >
-            {hero.description}
-          </motion.p>
+          <Reveal delay={0.16}>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground sm:mt-7 sm:text-base sm:leading-8 lg:text-lg">
+              {hero.description}
+            </p>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
-          >
-            <Link
-              href={`/${locale}/services`}
-              className="group inline-flex h-12 items-center justify-center gap-3 rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_35px_-12px_rgba(250,204,21,0.7)]"
-            >
-              {hero.primary}
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <a
-              href={siteConfig.calUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-12 items-center justify-center gap-3 rounded-md border border-border bg-background/60 px-5 text-sm font-semibold transition-colors hover:border-primary/60 hover:bg-primary/5"
-            >
-              {hero.secondary}
-              <ArrowUpRight className="size-4 text-primary" />
-            </a>
-          </motion.div>
+          <Reveal delay={0.24}>
+            <div className="mt-8 flex w-full flex-col gap-3 min-[420px]:flex-row sm:mt-9 sm:w-auto">
+              <Link
+                href={`/${locale}/contact`}
+                className="group inline-flex min-h-12 flex-1 items-center justify-center gap-3 bg-primary px-5 py-3 text-center text-sm font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_35px_-12px_rgba(250,204,21,0.7)] min-[420px]:flex-none"
+              >
+                {dictionary.nav.contact}
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <a
+                href={siteConfig.calUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 flex-1 items-center justify-center gap-3 border border-border bg-background/70 px-5 py-3 text-center text-sm font-semibold transition-colors hover:border-primary/60 hover:bg-primary/5 min-[420px]:flex-none"
+              >
+                {hero.secondary}
+                <ArrowUpRight className="size-4 text-primary" />
+              </a>
+            </div>
+          </Reveal>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-6 text-xs text-muted-foreground">
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-border pt-5 text-[10px] text-muted-foreground sm:mt-10 sm:gap-x-6 sm:pt-6 sm:text-xs">
             <span className="flex items-center gap-2">
-              <span className="size-1.5 bg-primary" /> {hero.note}
+              <span className="size-1.5 bg-primary" />
+              {hero.note}
             </span>
             <span className="font-code tracking-widest">WEB / CLOUD / AI</span>
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.18 }}
-          className="relative mx-auto w-full max-w-[590px]"
-        >
-          <div className="absolute inset-8 rounded-full bg-primary/10 blur-[90px]" />
-          <div className="relative aspect-square">
-            <Image
-              src="/images/hero-network.svg"
-              alt={
-                locale === "bn"
-                  ? "ওয়েব, ক্লাউড, API ও AI সিস্টেমের সংযোগ দেখানো বিমূর্ত নেটওয়ার্ক ইলাস্ট্রেশন"
-                  : "Abstract network illustration connecting web, cloud, APIs and AI systems"
-              }
-              fill
-              priority
-              sizes="(max-width: 1024px) 90vw, 48vw"
-              className="object-contain"
-            />
-            <div className="absolute top-[18%] left-0 hidden border border-border bg-background/90 px-3 py-2 shadow-xl backdrop-blur sm:block">
-              <p className="font-code text-[9px] tracking-widest text-muted-foreground">
-                01 / INTERFACE
-              </p>
-              <p className="mt-1 text-xs font-semibold">Web platforms</p>
-            </div>
-            <div className="absolute right-0 bottom-[16%] hidden border border-primary/40 bg-background/90 px-3 py-2 shadow-xl backdrop-blur sm:block">
-              <p className="font-code text-[9px] tracking-widest text-primary">
-                03 / INTELLIGENCE
-              </p>
-              <p className="mt-1 text-xs font-semibold">AI + automation</p>
-            </div>
-            <div className="absolute top-[8%] right-[7%] flex size-14 items-center justify-center border border-border bg-background/80 backdrop-blur">
-              <Zap className="size-6 text-primary" />
-            </div>
-          </div>
-          <div className="mt-2 flex flex-wrap justify-center gap-2">
-            {hero.orbit.map((item, index) => (
-              <span
-                key={item}
-                className="font-code text-[9px] tracking-[0.14em] text-muted-foreground"
-              >
-                {index > 0 && <span className="mr-2 text-primary">/</span>}
-                {item}
+        <Reveal delay={0.12} className="mx-auto w-full max-w-[540px] lg:max-w-none">
+          <div className="relative mx-auto w-full max-w-[540px]">
+            <div className="absolute inset-[12%] bg-primary/10 blur-[85px]" />
+            <div className="cut-panel relative aspect-[5/4] overflow-hidden border border-border bg-card sm:aspect-square">
+              <Image
+                src="/images/hero-network.svg"
+                alt={
+                  locale === "bn"
+                    ? "ওয়েব, ক্লাউড, API ও AI সিস্টেমের সংযোগ দেখানো নেটওয়ার্ক ইলাস্ট্রেশন"
+                    : "Network illustration connecting web, cloud, API and AI systems"
+                }
+                fill
+                priority
+                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 75vw, 45vw"
+                className="object-contain p-2 sm:p-5"
+              />
+              <div className="absolute top-3 left-3 border border-border bg-background/90 px-3 py-2 backdrop-blur sm:top-7 sm:left-7">
+                <p className="font-code text-[8px] tracking-widest text-muted-foreground sm:text-[9px]">
+                  01 / INTERFACE
+                </p>
+                <p className="mt-1 text-[10px] font-semibold sm:text-xs">Web platforms</p>
+              </div>
+              <div className="absolute right-3 bottom-3 border border-primary/40 bg-background/90 px-3 py-2 backdrop-blur sm:right-7 sm:bottom-7">
+                <p className="font-code text-[8px] tracking-widest text-primary sm:text-[9px]">
+                  03 / INTELLIGENCE
+                </p>
+                <p className="mt-1 text-[10px] font-semibold sm:text-xs">AI + automation</p>
+              </div>
+              <div className="absolute top-3 right-3 flex size-9 items-center justify-center border border-border bg-background/90 sm:top-7 sm:right-7 sm:size-12">
+                <Zap className="size-4 text-primary sm:size-5" />
+              </div>
+              <span className="font-code absolute bottom-3 left-3 text-[8px] tracking-[0.16em] text-muted-foreground sm:bottom-7 sm:left-7 sm:text-[9px]">
+                RUJOOIT / SYSTEMS
               </span>
-            ))}
+            </div>
+            <div className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-2 sm:gap-x-5">
+              {hero.orbit.map((item, index) => (
+                <span
+                  key={item}
+                  className="font-code text-[8px] tracking-[0.1em] text-muted-foreground sm:text-[9px] sm:tracking-[0.14em]"
+                >
+                  {index > 0 && <span className="mr-2 text-primary">/</span>}
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
 
       <a
-        href="#services"
-        className="font-code absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-[9px] tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary lg:flex"
+        href="#explore"
+        className="font-code absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-[9px] tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary lg:flex"
       >
         {hero.scroll}
         <ArrowDown className="size-3 text-primary" />
@@ -206,320 +190,182 @@ function HeroSection({ dictionary, locale }: HomePageProps) {
   )
 }
 
-// Each service card explains the actual work instead of relying on vague marketing labels.
-function ServicesSection({ dictionary, locale }: { dictionary: Dictionary; locale: Locale }) {
+// These routes lead to the full service, portfolio and company pages instead of repeating their content here.
+function ExploreSection({ locale, dictionary }: HomePageProps) {
+  const isBangla = locale === "bn"
+
   return (
-    <section id="services" className="scroll-mt-24 py-24 sm:py-28">
+    <section id="explore" className="scroll-mt-24 py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <Reveal>
-          <div className="mb-12 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-                01 / {dictionary.services.eyebrow}
+        <div className="mb-9 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl">
+            <Reveal>
+              <p className="font-code text-[10px] font-semibold tracking-[0.2em] text-primary">
+                01 / {isBangla ? "এক্সপ্লোর করুন" : "EXPLORE RUJOOIT"}
               </p>
-              <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl">
-                {dictionary.services.title}
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="font-display mt-3 text-3xl leading-tight font-bold tracking-[-0.055em] text-balance sm:text-4xl lg:text-5xl">
+                {isBangla
+                  ? "আপনার পরবর্তী পদক্ষেপের জন্য সঠিক দিকটি খুঁজুন।"
+                  : "Find the right direction for your next move."}
               </h2>
-            </div>
-            <p className="max-w-2xl text-sm leading-7 text-muted-foreground lg:justify-self-end lg:text-base">
-              {dictionary.services.description}
-            </p>
+            </Reveal>
           </div>
-        </Reveal>
-
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {dictionary.services.items.map((service, index) => {
-            const Icon = serviceIcons[index]
-            return (
-              <Reveal key={service.number} delay={index * 0.045}>
-                <Link href={`/${locale}/services/${serviceSlugs[index]}`} className="block h-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-                <article className="group edge-accent relative flex h-full min-h-[280px] flex-col border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-primary/[0.025] sm:p-7">
-                  <div className="flex items-start justify-between">
-                    <div className="flex size-12 items-center justify-center border border-primary/30 bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                      <Icon className="size-5" />
-                    </div>
-                    <span className="font-code text-xs tracking-widest text-muted-foreground">
-                      {service.number}
-                    </span>
-                  </div>
-                  <h3 className="font-display mt-8 text-xl font-bold tracking-tight">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    {service.description}
-                  </p>
-                  <div className="mt-auto flex flex-wrap gap-2 pt-6">
-                    {service.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-code border border-border px-2 py-1 text-[9px] tracking-wide text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-                </Link>
-              </Reveal>
-            )
-          })}
+          <Reveal delay={0.12}>
+            <p className="max-w-sm text-sm leading-7 text-muted-foreground">
+              {isBangla
+                ? "প্রতিটি বিষয়ের বিস্তারিত জানতে সংশ্লিষ্ট পেজে যান।"
+                : "Explore each area in depth on its dedicated page."}
+            </p>
+          </Reveal>
         </div>
-      </div>
-    </section>
-  )
-}
 
-// This section communicates the engineering standards behind the service list.
-function ApproachSection({ dictionary }: { dictionary: Dictionary }) {
-  const icons = [GitBranch, Layers3, Network]
-
-  return (
-    <section
-      id="approach"
-      className="scroll-mt-24 border-y border-border bg-muted/20 py-24 sm:py-28"
-    >
-      <div className="mx-auto grid max-w-[1440px] gap-14 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-12">
-        <Reveal>
-          <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-            02 / {dictionary.approach.eyebrow}
-          </p>
-          <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl">
-            {dictionary.approach.title}
-          </h2>
-          <p className="mt-6 max-w-xl text-sm leading-8 text-muted-foreground sm:text-base">
-            {dictionary.approach.description}
-          </p>
-
-          <div className="mt-9 space-y-6">
-            {dictionary.approach.pillars.map(([title, description], index) => {
-              const Icon = icons[index]
-              return (
-                <div key={title} className="flex gap-4">
-                  <div className="mt-1 flex size-9 shrink-0 items-center justify-center border border-border bg-background text-primary">
-                    <Icon className="size-4" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">{title}</h3>
-                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                      {description}
-                    </p>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.12}>
-          <div className="cut-panel relative overflow-hidden border border-border bg-background p-6 sm:p-9">
-            <div className="site-grid absolute inset-0 opacity-60" />
-            <div className="relative">
-              <div className="flex items-center justify-between border-b border-border pb-5">
-                <span className="font-code text-[9px] tracking-[0.2em] text-primary">
-                  {dictionary.approach.visualLabel}
-                </span>
-                <span className="font-code text-[9px] text-muted-foreground">
-                  RIT / SYS-01
-                </span>
-              </div>
-              <h3 className="font-display mt-8 max-w-sm text-3xl font-bold tracking-[-0.05em] sm:text-4xl">
-                {dictionary.approach.visualTitle}
-              </h3>
-              <div className="relative mt-10 space-y-3">
-                <div className="absolute top-6 bottom-6 left-[17px] w-px bg-gradient-to-b from-primary via-primary/40 to-transparent" />
-                {dictionary.approach.visualItems.map((item, index) => (
-                  <div
-                    key={item}
-                    className="relative flex items-center gap-4 border border-border bg-card/90 p-4 backdrop-blur"
-                  >
-                    <span className="font-code relative z-10 flex size-9 shrink-0 items-center justify-center border border-primary/50 bg-background text-[10px] text-primary">
-                      0{index + 1}
-                    </span>
-                    <span className="text-sm font-semibold">{item}</span>
-                    <ArrowUpRight className="ml-auto size-4 text-muted-foreground" />
-                  </div>
-                ))}
-              </div>
-              <div className="font-code mt-7 flex items-center justify-between text-[9px] tracking-widest text-muted-foreground">
-                <span>THINK / BUILD / IMPROVE</span>
-                <span className="text-primary">● SYSTEM READY</span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
-// A four-step process makes the engagement model understandable before a visitor contacts us.
-function ProcessSection({ dictionary }: { dictionary: Dictionary }) {
-  return (
-    <section className="py-24 sm:py-28">
-      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <Reveal>
-          <div className="mb-12 max-w-2xl">
-            <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-              03 / {dictionary.process.eyebrow}
-            </p>
-            <h2 className="font-display mt-4 text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl">
-              {dictionary.process.title}
-            </h2>
-          </div>
-        </Reveal>
-
-        <div className="grid gap-0 border-y border-border md:grid-cols-4">
-          {dictionary.process.steps.map(
-            ([number, title, description], index) => (
-              <Reveal key={number} delay={index * 0.06} className="h-full">
-                <article className="group relative h-full border-b border-border p-6 last:border-b-0 md:border-r md:border-b-0 md:last:border-r-0 lg:p-7">
-                  <span className="font-code text-xs tracking-widest text-primary">
-                    {number} / 04
-                  </span>
-                  <h3 className="font-display mt-12 text-2xl font-bold tracking-tight">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    {description}
-                  </p>
-                  <div className="mt-8 flex items-center justify-between">
-                    <span className="h-px w-12 bg-border transition-all group-hover:w-20 group-hover:bg-primary" />
-                    <ArrowUpRight className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
-                  </div>
-                </article>
-              </Reveal>
-            )
-          )}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// The value proposition stays grounded in engineering practices, not invented client results.
-function DifferenceSection({ dictionary }: { dictionary: Dictionary }) {
-  return (
-    <section
-      id="difference"
-      className="scroll-mt-24 overflow-hidden border-y border-border bg-muted/20 py-24 sm:py-28"
-    >
-      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-12">
-        <Reveal>
-          <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-            04 / {dictionary.work.eyebrow}
-          </p>
-          <h2 className="font-display mt-4 max-w-2xl text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl">
-            {dictionary.work.title}
-          </h2>
-          <p className="mt-6 max-w-xl text-sm leading-8 text-muted-foreground sm:text-base">
-            {dictionary.work.description}
-          </p>
-          <ul className="mt-8 space-y-4">
-            {dictionary.work.points.map((point) => (
-              <li
-                key={point}
-                className="flex items-start gap-3 text-sm leading-6"
-              >
-                <span className="mt-2 size-1.5 shrink-0 bg-primary" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-
-        <Reveal delay={0.12}>
-          <div className="relative border border-border bg-background p-7 sm:p-10">
-            <div className="absolute top-0 right-0 h-20 w-20 border-t border-r border-primary/70" />
-            <div className="font-code text-[9px] tracking-[0.2em] text-primary">
-              RUJOOIT / ENGINEERING NOTE
-            </div>
-            <div className="my-10 flex items-center gap-3">
-              <div className="flex size-14 items-center justify-center border border-primary/40 bg-primary/10 text-primary">
-                <Cpu className="size-7" />
-              </div>
-              <div className="h-px flex-1 bg-gradient-to-r from-primary/60 to-transparent" />
-              <div className="flex size-14 items-center justify-center border border-border text-muted-foreground">
-                <Database className="size-6" />
-              </div>
-            </div>
-            <h3 className="font-display text-3xl leading-tight font-bold tracking-[-0.045em] sm:text-4xl">
-              {dictionary.work.callout}
-            </h3>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              {dictionary.work.calloutDescription}
-            </p>
+        <div className="grid gap-4 lg:grid-cols-12">
+          <Reveal className="lg:col-span-7">
             <Link
-              href="#contact"
-              className="group mt-8 inline-flex items-center gap-3 text-sm font-bold text-primary"
+              href={`/${locale}/services`}
+              className="group relative flex min-h-[360px] h-full flex-col justify-between overflow-hidden border border-border bg-[#101010] p-6 text-white sm:min-h-[420px] sm:p-9"
             >
-              {dictionary.nav.contact}
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
-// The inquiry form is intentionally front-end only until the owner adds an API endpoint.
-function ContactSection({
-  dictionary,
-  locale,
-}: {
-  dictionary: Dictionary
-  locale: Locale
-}) {
-  return (
-    <section id="contact" className="scroll-mt-24 py-24 sm:py-28">
-      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-12">
-        <Reveal>
-          <p className="font-code text-[10px] font-semibold tracking-[0.22em] text-primary">
-            06 / {dictionary.contact.eyebrow}
-          </p>
-          <h2 className="font-display mt-4 max-w-xl text-4xl leading-[1.08] font-bold tracking-[-0.055em] text-balance sm:text-5xl">
-            {dictionary.contact.title}
-          </h2>
-          <p className="mt-6 max-w-md text-sm leading-8 text-muted-foreground sm:text-base">
-            {dictionary.contact.description}
-          </p>
-
-          <div className="mt-10 border-l-2 border-primary pl-5">
-            <p className="text-sm text-muted-foreground">
-              {dictionary.contact.direct}
-            </p>
-            <a
-              href={siteConfig.calUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 inline-flex items-center gap-2 text-lg font-bold transition-colors hover:text-primary"
-            >
-              {dictionary.contact.book}
-              <ArrowUpRight className="size-5 text-primary" />
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="border border-border bg-card p-5 sm:p-8">
-            <div className="mb-7 flex items-center justify-between border-b border-border pb-5">
-              <div>
-                <p className="font-code text-[9px] tracking-[0.2em] text-primary">
-                  PROJECT INQUIRY
+              <Image
+                src="/images/service-grid.svg"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="object-cover opacity-75 transition-transform duration-700 group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/45 to-black/10" />
+              <div className="relative flex items-center justify-between">
+                <span className="font-code text-[9px] tracking-[0.2em] text-primary sm:text-[10px]">
+                  02 / CAPABILITIES
+                </span>
+                <span className="flex size-10 items-center justify-center border border-white/30 bg-black/20 transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-black">
+                  <ArrowUpRight className="size-4" />
+                </span>
+              </div>
+              <div className="relative max-w-lg">
+                <div className="mb-5 flex flex-wrap gap-2">
+                  {serviceIcons.map((Icon, index) => (
+                    <span key={index} className="flex size-9 items-center justify-center border border-white/20 bg-black/30 text-primary backdrop-blur">
+                      <Icon className="size-4" />
+                    </span>
+                  ))}
+                </div>
+                <h3 className="font-display text-3xl font-bold tracking-[-0.05em] sm:text-4xl">
+                  {dictionary.nav.services}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-7 text-white/70">
+                  {isBangla
+                    ? "ওয়েব, ক্লাউড, API, MCP এবং AI—আমাদের সম্পূর্ণ engineering capabilities দেখুন।"
+                    : "Web, cloud, APIs, MCP and AI—explore the full range of our engineering capabilities."}
                 </p>
-                <p className="mt-2 text-sm font-semibold">
-                  {locale === "bn"
-                    ? "আপনার প্রজেক্ট সম্পর্কে জানান"
-                    : "Tell us about your project"}
+                <span className="mt-6 inline-flex items-center gap-3 text-sm font-bold text-primary">
+                  {isBangla ? "সার্ভিসগুলো দেখুন" : "Explore our services"}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+
+          <Reveal delay={0.08} className="lg:col-span-5">
+            <Link
+              href={`/${locale}/work`}
+              className="group relative flex min-h-[360px] h-full flex-col justify-between overflow-hidden border border-border bg-card"
+            >
+              <div className="relative min-h-[205px] flex-1 overflow-hidden bg-muted">
+                <Image
+                  src="/images/projects/projectron.png"
+                  alt={isBangla ? "Projectron প্রজেক্টের বাস্তব স্ক্রিনশট" : "Actual Projectron project screenshot"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                <span className="font-code absolute top-4 left-4 bg-black/70 px-3 py-2 text-[9px] tracking-[0.18em] text-primary">
+                  03 / SELECTED BUILDS
+                </span>
+                <span className="absolute right-4 bottom-4 flex size-10 items-center justify-center border border-white/40 bg-black/50 text-white backdrop-blur transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-black">
+                  <ArrowUpRight className="size-4" />
+                </span>
+              </div>
+              <div className="p-6 sm:p-7">
+                <h3 className="font-display text-2xl font-bold tracking-tight">
+                  {dictionary.nav.work}
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                  {isBangla
+                    ? "বাস্তব প্রোডাক্ট ও engineering work-এর নির্বাচিত সংগ্রহ দেখুন।"
+                    : "Explore selected product builds and hands-on engineering work."}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
+                  {isBangla ? "প্রজেক্ট দেখুন" : "View the work"}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+
+          <Reveal delay={0.04} className="lg:col-span-5">
+            <Link
+              href={`/${locale}/about`}
+              className="group relative flex min-h-[290px] h-full flex-col justify-between overflow-hidden border border-border bg-muted/35 p-6 sm:p-8"
+            >
+              <div className="site-grid absolute inset-0 opacity-60" />
+              <div className="relative flex items-start justify-between">
+                <span className="font-code text-[9px] tracking-[0.2em] text-primary">
+                  04 / THE STUDIO
+                </span>
+                <span className="flex size-10 items-center justify-center border border-border bg-background transition-all group-hover:-translate-y-1 group-hover:border-primary">
+                  <Network className="size-4 text-primary" />
+                </span>
+              </div>
+              <div className="relative">
+                <h3 className="font-display max-w-sm text-2xl font-bold tracking-[-0.04em] sm:text-3xl">
+                  {dictionary.nav.approach}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-7 text-muted-foreground">
+                  {isBangla
+                    ? "আমাদের কাজের দর্শন, engineering principles এবং কীভাবে সহযোগিতা করি তা জানুন।"
+                    : "Learn about our principles, engineering mindset and how we collaborate."}
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
+                  {isBangla ? "আমাদের সম্পর্কে" : "Meet the team"}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+              <div className="absolute -right-5 -bottom-12 size-44 rotate-12 border border-primary/20 transition-transform duration-700 group-hover:rotate-6" />
+            </Link>
+          </Reveal>
+
+          <Reveal delay={0.1} className="lg:col-span-7">
+            <div className="relative flex min-h-[290px] h-full flex-col justify-between overflow-hidden bg-primary p-6 text-black sm:p-8 lg:flex-row lg:items-end lg:gap-8">
+              <div className="absolute -top-20 right-10 size-64 rounded-full border border-black/15" />
+              <div className="absolute -top-10 right-20 size-44 rounded-full border border-black/15" />
+              <div className="relative max-w-xl">
+                <span className="font-code text-[9px] font-semibold tracking-[0.2em] text-black/65">
+                  05 / LET&apos;S BUILD
+                </span>
+                <h3 className="font-display mt-5 text-3xl leading-tight font-extrabold tracking-[-0.05em] sm:text-4xl">
+                  {isBangla
+                    ? "একটি ভালো আইডিয়াকে বাস্তবে রূপ দিন।"
+                    : "Turn a good idea into something real."}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-7 text-black/70">
+                  {isBangla
+                    ? "আপনার লক্ষ্য ও চ্যালেঞ্জ নিয়ে কথা শুরু করুন।"
+                    : "Start a conversation about your goals and technical challenges."}
                 </p>
               </div>
-              <span className="font-code text-[10px] text-muted-foreground">
-                RIT / 05
-              </span>
+              <Link
+                href={`/${locale}/contact`}
+                className="group relative mt-7 inline-flex min-h-12 shrink-0 items-center justify-center gap-3 self-start border border-black/70 px-5 text-sm font-bold transition-all hover:bg-black hover:text-primary lg:self-end"
+              >
+                {dictionary.nav.contact}
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
             </div>
-            <ContactForm dictionary={dictionary.contact} />
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
     </section>
   )
@@ -536,13 +382,7 @@ export function HomePage({ locale, dictionary }: HomePageProps) {
       >
         <SiteHeader locale={locale} dictionary={dictionary} />
         <HeroSection locale={locale} dictionary={dictionary} />
-        <ServicesSection dictionary={dictionary} locale={locale} />
-        <FeaturedWork locale={locale} />
-        <ApproachSection dictionary={dictionary} />
-        <ProcessSection dictionary={dictionary} />
-        <DifferenceSection dictionary={dictionary} />
-        <FAQSection locale={locale} />
-        <ContactSection dictionary={dictionary} locale={locale} />
+        <ExploreSection locale={locale} dictionary={dictionary} />
         <SiteFooter locale={locale} dictionary={dictionary} />
       </main>
     </>
