@@ -38,7 +38,9 @@ export const homeDictionary = {
     description:
       "From ambitious ideas to dependable digital products, we bring web, cloud, APIs and AI together to help your business move forward.",
     primary: "Explore our services",
+    primaryMobile: "Services",
     secondary: "Book a discovery call",
+    secondaryMobile: "Book a Call",
     note: "Thoughtful engineering. Technology that moves business forward.",
     scroll: "SCROLL TO EXPLORE",
     orbit: ["WEB PLATFORMS", "CLOUD SYSTEMS", "AI & AUTOMATION"],
@@ -180,8 +182,10 @@ export const homeDictionary = {
     servicePlaceholder: "Choose a service",
     message: "A little about your project",
     send: "Prepare inquiry",
+    sending: "Sending...",
+    sent: "Sent successfully",
     privacy:
-      "No backend is connected yet. Your form details stay in this browser.",
+      "Your inquiry will be sent securely to our email. We will reply to the address you provide.",
     options: [
       "Web development",
       "Cloud engineering",
@@ -191,7 +195,9 @@ export const homeDictionary = {
       "Not sure yet",
     ],
     success:
-      "Your inquiry is ready. Connect your API to enable message delivery.",
+      "Thank you. Your inquiry has been sent successfully. We will be in touch soon.",
+    deliveryError:
+      "We could not send your inquiry. Please try again in a moment or contact us directly.",
     error: "Please complete the required fields.",
     direct: "Prefer a conversation?",
     book: "Schedule a call",

@@ -167,8 +167,13 @@ export function ServicesListing({
               rel="noreferrer"
               className="group relative isolate inline-flex h-12 items-center gap-3 overflow-hidden bg-primary px-5 text-sm font-bold text-primary-foreground"
             >
-              <span aria-hidden="true" className="absolute inset-0 -z-10 -translate-x-full bg-foreground transition-transform duration-500 ease-in-out group-hover:translate-x-0" />
-              <span className="transition-colors duration-300 group-hover:text-background">{dictionary.contact.book}</span>
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 -translate-x-full bg-foreground transition-transform duration-500 ease-in-out group-hover:translate-x-0"
+              />
+              <span className="transition-colors duration-300 group-hover:text-background">
+                {dictionary.contact.book}
+              </span>
               <ArrowUpRight className="size-4 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-background" />
             </a>
           </div>

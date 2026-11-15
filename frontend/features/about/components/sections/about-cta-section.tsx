@@ -41,8 +41,13 @@ export function AboutCtaSection({
           href={`/${locale}/contact`}
           className="group relative isolate inline-flex h-12 items-center gap-3 overflow-hidden border border-primary-foreground/60 px-5 text-sm font-bold"
         >
-          <span aria-hidden="true" className="absolute inset-0 -z-10 -translate-x-full bg-primary-foreground transition-transform duration-500 ease-in-out group-hover:translate-x-0" />
-          <span className="transition-colors duration-300 group-hover:text-primary">{dictionary.nav.contact}</span>
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 -translate-x-full bg-primary-foreground transition-transform duration-500 ease-in-out group-hover:translate-x-0"
+          />
+          <span className="transition-colors duration-300 group-hover:text-primary">
+            {dictionary.nav.contact}
+          </span>
           <ArrowUpRight className="size-4 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-primary" />
         </Link>
       </div>

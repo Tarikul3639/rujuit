@@ -13,7 +13,7 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon"
 import type { Dictionary, Locale } from "@/lib/i18n"
 import { siteConfig } from "@/lib/site"
 
-const MotionLink = motion(Link)
+const MotionLink = motion.create(Link)
 
 type SiteFooterProps = {
   locale: Locale

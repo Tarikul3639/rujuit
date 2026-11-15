@@ -228,7 +228,7 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
                 className="absolute inset-0 z-0 -translate-x-full -translate-y-full bg-foreground transition-transform duration-400 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
               />
               <span className="relative z-10 transition-colors duration-500 group-hover:text-background">
-                <span className="sm:hidden">Our Services</span>
+                <span className="sm:hidden">{hero.primaryMobile}</span>
                 <span className="hidden sm:inline">{hero.primary}</span>
               </span>
               <ArrowRight className="relative z-10 size-4 transition-all duration-500 group-hover:translate-x-1 group-hover:text-background" />
@@ -239,7 +239,7 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
               rel="noreferrer"
               className="inline-flex w-full items-center justify-center gap-3 border border-border bg-background/70 px-5 py-3 text-xs font-semibold whitespace-nowrap transition-colors hover:border-primary/60 hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:w-auto sm:px-7 md:text-sm"
             >
-              <span className="sm:hidden">Book a Call</span>
+              <span className="sm:hidden">{hero.secondaryMobile}</span>
               <span className="hidden sm:inline">{hero.secondary}</span>
               <ArrowUpRight className="size-4 text-primary" />
             </a>
@@ -275,10 +275,11 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
                     role="tab"
                     aria-selected={selected}
                     onClick={() => setActive(i)}
-                    className={`relative flex shrink-0 items-center gap-2 overflow-hidden px-3.5 py-3 text-[13px] font-semibold transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary sm:px-5 sm:py-3.5 sm:text-sm ${selected
+                    className={`relative flex shrink-0 items-center gap-2 overflow-hidden px-3.5 py-3 text-[13px] font-semibold transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary sm:px-5 sm:py-3.5 sm:text-sm ${
+                      selected
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
-                      }`}
+                    }`}
                   >
                     <Icon
                       className={`size-4 ${selected ? "text-primary" : ""}`}

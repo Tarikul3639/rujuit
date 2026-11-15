@@ -81,7 +81,7 @@ export function ContactPage({
           </div>
         </section>
         <section className="section-atmosphere mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_0.8fr] lg:px-12 lg:py-28">
-          <div className="border border-border bg-card p-5 sm:p-9">
+          <div className="border border-border bg-card p-5 sm:p-9 bg-linear-to-br from-primary/6 via-transparent to-primary/3">
             <div className="mb-8 border-b border-border pb-5">
               <motion.p
                 {...reveal()}
@@ -121,8 +121,13 @@ export function ContactPage({
                 rel="noreferrer"
                 className="group relative isolate mt-5 inline-flex h-11 items-center gap-2 overflow-hidden bg-primary px-4 text-sm font-bold text-primary-foreground"
               >
-                <span aria-hidden="true" className="absolute inset-0 -z-10 -translate-x-full bg-foreground transition-transform duration-500 ease-in-out group-hover:translate-x-0" />
-                <span className="transition-colors duration-300 group-hover:text-background">{dictionary.nav.book}</span>
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 -translate-x-full bg-foreground transition-transform duration-500 ease-in-out group-hover:translate-x-0"
+                />
+                <span className="transition-colors duration-300 group-hover:text-background">
+                  {dictionary.nav.book}
+                </span>
                 <ArrowUpRight className="size-4 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-background" />
               </a>
             </div>

@@ -48,7 +48,7 @@ export function PoliciesContent({
             <h2 className="font-display mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
               {section.title}
             </h2>
-            <p className="mt-4 text-base sm:text-lg font-medium text-foreground/90">
+            <p className="mt-4 text-base font-medium text-foreground/90 sm:text-lg">
               {section.intro}
             </p>
             <div className="mt-5 space-y-4">
