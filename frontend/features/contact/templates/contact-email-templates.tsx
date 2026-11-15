@@ -33,9 +33,9 @@ function EmailLayout({
       <Tailwind config={{ presets: [pixelBasedPreset] }}>
         <Head />
         <Preview>{preview}</Preview>
-        <Body className="mx-auto my-0 bg-[#f4f4f5] px-3 py-9 font-sans">
-          <Container className="mx-auto my-0 max-w-150 overflow-hidden rounded-none border border-solid border-[#e4e4e7] bg-white">
-            <Section className="border-b-4 border-solid border-[#eab308] bg-[#09090b] px-7.5 py-6.5">
+        <Body className="mx-auto my-0 p-0 font-sans">
+          <Container className="mx-auto my-0 p-0 overflow-hidden rounded-none bg-[#171717] border-[#e4e4e7]">
+            <Section className="border-b-4 border-solid border-[#eab308] bg-[#000000] px-7.5 py-6.5">
               {logoUrl ? (
                 <Img
                   src={logoUrl}
@@ -56,7 +56,7 @@ function EmailLayout({
 
             <Section className="px-7.5 py-7.5">{children}</Section>
 
-            <Section className="border-t border-solid border-[#e4e4e7] bg-[#fafafa] px-7.5 py-5">
+            <Section className="border-t border-solid border-[#e4e4e7] bg-[#000000] px-7.5 py-5">
               <Text className="m-0 text-xs font-bold text-[#18181b]">
                 RujuIT · Engineering Digital Possibilities
               </Text>
@@ -95,7 +95,7 @@ export function ContactNotificationEmail({
       preview={`New inquiry from ${values.name} about ${values.service}`}
       eyebrow="New website inquiry"
     >
-      <Text className="mt-0 mb-0 inline-block rounded-none bg-[#fef9c3] px-2.5 py-1.5 text-[10px] font-bold tracking-[1px] text-[#854d0e]">
+      <Text className="mt-0 mb-0 inline-block rounded-none px-2.5 py-1.5 text-[10px] font-bold tracking-[1px] bg-[#fef9c3] text-[#854d0e]">
         CONTACT FORM
       </Text>
       <Heading className="mt-4.5 mb-1.5 text-[25px] leading-8 font-bold tracking-[-0.6px] text-[#18181b]">
@@ -114,15 +114,22 @@ export function ContactNotificationEmail({
       <Heading className="mt-6 mb-2.5 text-[13px] font-bold text-[#18181b]">
         Project message
       </Heading>
-      <Section className="rounded-none border border-l-4 border-solid border-[#e4e4e7] border-l-[#eab308] bg-[#fafafa] px-4.25 py-3.75">
+      <Section className="rounded-none border border-l-4 border-solid border-[#e4e4e7] border-l-[#eab308] px-4.25 py-3.75">
         <Text className="m-0 text-[13px] leading-5.5 wrap-break-word whitespace-pre-wrap text-[#3f3f46]">
           {values.message}
         </Text>
       </Section>
 
       <Button
-        href={`mailto:${encodeURIComponent(values.email)}?subject=${encodeURIComponent("Re: Your RujuIT inquiry")}`}
-        className="mt-6 flex h-8 w-fit items-center justify-center rounded-none border border-transparent bg-[#eab308] px-2.5 py-0 text-center text-xs font-medium text-[#171717] no-underline"
+        href={`mailto:${values.email}?subject=${encodeURIComponent("Re: Your RujuIT inquiry")}`}
+        className="mt-6 w-fit rounded-none border border-transparent bg-[#eab308] px-2.5 py-0 text-xs font-medium text-[#171717] no-underline"
+        style={{
+          display: "inline-block",
+          textAlign: "center",
+          verticalAlign: "middle",
+          lineHeight: "32px",
+          padding: "0 10px",
+        }}
       >
         Reply to {values.name}
       </Button>
@@ -142,7 +149,7 @@ export function ContactConfirmationEmail({
       preview="Your message has been received by the RujuIT team."
       eyebrow="Message received"
     >
-      <Text className="mt-0 mb-0 inline-block rounded-none bg-[#dcfce7] px-2.5 py-1.5 text-[10px] font-bold tracking-[1px] text-[#166534]">
+      <Text className="mt-0 mb-0 inline-block rounded-none px-2.5 py-1.5 text-[10px] font-bold tracking-[1px] text-[#166534]">
         SUCCESSFULLY RECEIVED
       </Text>
       <Heading className="mt-5 mb-2 text-[26px] leading-8.5 font-bold tracking-[-0.6px] text-[#18181b]">
@@ -153,7 +160,7 @@ export function ContactConfirmationEmail({
         appreciate you taking the time to contact us.
       </Text>
 
-      <Section className="mt-6 rounded-lg border border-l-4 border-solid border-[#e4e4e7] border-l-[#facc15] bg-[#fafafa] px-4.5 py-4">
+      <Section className="mt-6 rounded-lg border border-l-4 border-solid border-[#e4e4e7] border-l-[#facc15] px-4.5 py-4">
         <Text className="m-0 text-[10px] font-bold tracking-[1px] text-[#71717a] uppercase">
           Your selected service
         </Text>
