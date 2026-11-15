@@ -1,41 +1,82 @@
+<p align="center">
+  <img src="../assets/brand/logos/RujuIT-Premium-Software-Logo.png" alt="RujuIT — Engineering Digital Possibilities" width="300" />
+</p>
+
 # RujuIT — Project Overview
 
-## Purpose
-Build a polished, fast, accessible, and search-engine-friendly global website for RujuIT, positioning the company as a premium software and digital solutions agency.
+**Live website:** https://rujuit.vercel.app/
 
-## Primary outcomes
-- Explain who RujuIT serves, what problems it solves, and what services it provides.
-- Establish trust through a clear brand identity, case studies, process, and contact information.
-- Generate qualified enquiries from international prospects.
-- Provide a foundation that can grow into a portfolio, blog/insights area, and client-facing features.
+RujuIT is a software engineering agency focused on thoughtful digital products, connected systems, and practical automation. The public website introduces the agency, explains its engineering capabilities, presents selected work, and provides ways to start a conversation.
 
-## Suggested initial website pages
-1. Home
-2. Services (with a dedicated page for each major service)
-3. Work / Case Studies
-4. About
-5. Process
-6. Insights / Blog
-7. Contact
+## Website structure
 
-## Suggested technical direction
-- Frontend: Next.js + TypeScript, with server-rendered/static pages where appropriate.
-- Styling: Tailwind CSS or a consistent component-based design system.
-- Content: Start with local content/MDX; consider a CMS only when publishing needs justify it.
-- Backend: Add an API only for features that require server-side logic (forms, integrations, authentication, customer portal, etc.).
-- Hosting: Select a platform after build and operational requirements are clear.
+The site is available in English (`/en`) and Bengali (`/bn`).
 
-## Quality requirements
-- Responsive layouts and mobile-first testing.
-- Accessible semantic HTML, keyboard support, and readable contrast.
-- Optimized images, fonts, scripts, and Core Web Vitals.
-- Unique page titles, descriptions, canonical URLs, Open Graph metadata, sitemap, and robots.txt.
-- Structured data only where it accurately describes the business and content.
-- Analytics and consent/privacy requirements reviewed for target markets.
+| Page               | Route                          | Purpose                                                                                 |
+| ------------------ | ------------------------------ | --------------------------------------------------------------------------------------- |
+| Home               | `/{locale}`                    | Agency introduction, capabilities, delivery approach, principles, FAQs, and contact CTA |
+| Services           | `/{locale}/services`           | Overview of six engineering capabilities                                                |
+| Service detail     | `/{locale}/services/{service}` | Service-specific outcomes, approach, technology stack, and deliverables                 |
+| Selected work      | `/{locale}/work`               | Eight independent software and engineering projects                                     |
+| About              | `/{locale}/about`              | Co-founders, engineering principles, and delivery approach                              |
+| Contact            | `/{locale}/contact`            | Project inquiry and discovery-call options                                              |
+| Policies & Privacy | `/{locale}/policies`           | Business engagement and working policies                                                |
 
-## Open decisions
-- Final service list and target industries.
-- Brand voice and primary website language(s).
-- Domain name and hosting provider.
-- Contact / lead handling workflow.
-- Whether a CMS or backend is needed for launch.
+### Services
+
+1. Full-stack web development
+2. Cloud engineering
+3. API integration
+4. MCP server development
+5. AI & workflow automation
+6. Custom software solutions
+
+## How the website presents the work
+
+The home page explains the agency and links visitors to the service, work, and about sections. The delivery approach is presented as Discover, Architect, Engineer, and Evolve. The About page introduces the two co-founders and the engineering principles behind the studio. The Selected Work page lists independent projects rather than client case studies.
+
+The Contact page offers a project inquiry form and a discovery-call option. The live page currently notes that the form validates in the browser only and does not send or store submissions.
+
+## Technology
+
+The website frontend uses:
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Motion
+- Radix UI
+- Resend integration for email
+
+## Live website screenshots
+
+The screenshots below were captured from **https://rujuit.vercel.app/** on **November 15, 2026**, at a desktop viewport of 1440 pixels wide. Each page was scrolled through in viewport-sized increments to activate in-view animations and reveal animated sections. After reaching the bottom and allowing animations to settle, the page was returned to the top before taking the full-page screenshot.
+
+### Home
+
+![RujuIT homepage — English](screenshots/home-en.png)
+
+![RujuIT homepage — Bengali](screenshots/home-bn.png)
+
+### Services
+
+![Services overview](screenshots/services-en.png)
+
+![MCP server development service detail](screenshots/service-mcp-en.png)
+
+### Selected work
+
+![Selected work page](screenshots/work-en.png)
+
+### About
+
+![About RujuIT page](screenshots/about-en.png)
+
+### Contact
+
+![Contact page](screenshots/contact-en.png)
+
+### Policies & Privacy
+
+![Policies and privacy page](screenshots/policies-en.png)

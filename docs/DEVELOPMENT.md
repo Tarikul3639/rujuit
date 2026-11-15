@@ -1,12 +1,46 @@
 # Development Notes
 
-## Repository conventions
-- Keep product/application code inside `apps/`.
-- Keep reusable official brand materials inside `assets/brand/`.
-- Keep page-specific website imagery inside `assets/images/`.
-- Keep technical decisions and project instructions in `docs/`.
-- Use descriptive kebab-case names for new files and folders.
-- Keep secrets out of source control.
+## Frontend
 
-## Frontend recommendation
-Use Next.js with TypeScript for the public agency website. It provides a practical foundation for server-rendered pages, metadata, routing, and static content. Confirm the package manager and deployment target when the frontend is initialized.
+The public website lives in `frontend/` and is built with Next.js, React, TypeScript, and Tailwind CSS.
+
+## Run locally
+
+From the repository root:
+
+```bash
+cd frontend
+pnpm install
+pnpm dev
+```
+
+## Environment
+
+Create `frontend/.env.local` from `frontend/.env.example`. The example file lists the configuration used by the site:
+
+- Resend API key and contact email sender/recipient settings.
+- Public website origin and booking URL.
+- Optional public contact email.
+- Optional LinkedIn, Facebook, WhatsApp, and Instagram URLs.
+
+Use real credentials only in local or deployment environment variables. Do not commit `.env.local` or production secrets.
+
+## Useful checks
+
+Run from `frontend/`:
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
+
+## Project directories
+
+- `frontend/app/` — locale-aware routes and page metadata.
+- `frontend/features/` — page and feature components, content, and data.
+- `frontend/components/` — shared interface components.
+- `frontend/messages/` — English and Bengali content.
+- `frontend/public/` — files served by the website.
+- `assets/brand/` — original brand assets.
+- `docs/screenshots/` — full-page captures of the live website.
