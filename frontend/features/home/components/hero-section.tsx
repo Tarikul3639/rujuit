@@ -194,7 +194,7 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
 
           <motion.h1
             {...reveal(0.06, 20, 0.7)}
-            className="font-display text-[clamp(1.9rem,8.6vw,5rem)] leading-[1.08] font-extrabold tracking-tighter sm:tracking-[-0.06em]"
+            className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.08] font-extrabold tracking-tighter sm:tracking-[-0.06em]"
           >
             <span className="block">{hero.titleStart}</span>
             {/* Fixed-height, single-line slot: flipping words can never change the layout height */}

@@ -173,8 +173,8 @@ export function MobileNavigationSidebar({
               className="group mt-4 flex min-h-14 items-center justify-center-safe gap-2 rounded-xs border border-primary bg-primary px-4 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20 active:scale-[0.99]"
             >
               <span> {dictionary.nav.book}</span>
-              <span className="flex size-7 items-center justify-center rounded-full bg-background text-primary transition-transform duration-200 group-hover:translate-x-1">
-                <ArrowUpRight className="size-3.5" />
+              <span className="flex size-5 items-center justify-center rounded-full bg-background text-primary transition-transform duration-200 group-hover:translate-x-1">
+                <ArrowUpRight className="size-3" />
               </span>
             </a>
           </div>
