@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "motion/react"
 import { useReveal } from "@/lib/use-reveal"
@@ -99,11 +100,22 @@ export function ServicesListing({
                 <Link
                   key={slug}
                   href={`/${locale}/services/${slug}`}
-                  className="group relative border-b border-border transition-colors hover:bg-primary/[0.035] md:even:border-l xl:nth-[3n+2]:border-l xl:nth-[3n+3]:border-l"
+                  className="group relative isolate overflow-hidden border-b border-border transition-colors hover:border-primary/40 md:even:border-l xl:nth-[3n+2]:border-l xl:nth-[3n+3]:border-l"
                 >
+                  <Image
+                    src={`/images/services/${slug}.svg`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="pointer-events-none object-cover object-center opacity-25 transition-all duration-700 group-hover:scale-105 group-hover:opacity-40"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-linear-to-b from-background/15 via-background/65 to-background"
+                  />
                   <motion.div
                     {...reveal((index % 3) * 0.14, 20, 0.65)}
-                    className="relative flex min-h-85 flex-col p-7"
+                    className="relative z-10 flex min-h-85 flex-col p-7"
                   >
                     <div className="flex items-center justify-between">
                       <motion.span
