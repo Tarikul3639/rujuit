@@ -81,7 +81,7 @@ export function ContactPage({
           </div>
         </section>
         <section className="section-atmosphere mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_0.8fr] lg:px-12 lg:py-28">
-          <div className="border border-border bg-card p-5 sm:p-9 bg-linear-to-br from-primary/6 via-transparent to-primary/3">
+          <div className="border border-border bg-card bg-linear-to-br from-primary/6 via-transparent to-primary/3 p-5 sm:p-9">
             <div className="mb-8 border-b border-border pb-5">
               <motion.p
                 {...reveal()}

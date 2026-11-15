@@ -1,14 +1,15 @@
 import { NextResponse } from "next/server"
+import { render } from "react-email"
 import { Resend } from "resend"
+import { createElement } from "react"
 
 import { contactFormSchema } from "@/features/contact/components/contact-form.schema"
 import {
-  createContactConfirmationEmail,
-  createContactNotificationEmail,
+  ContactConfirmationEmail,
+  ContactNotificationEmail,
 } from "@/features/contact/templates/contact-email-templates"
 
 export const runtime = "nodejs"
-
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: Request) {
@@ -24,7 +25,9 @@ export async function POST(request: Request) {
     }
 
     const to = process.env.CONTACT_TO_EMAIL
-    const from = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev"
+    const fromAddress =
+      process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev"
+    const from = `RujuIT Contact <${fromAddress}>`
 
     if (!process.env.RESEND_API_KEY || !to) {
       return NextResponse.json(
@@ -34,42 +37,79 @@ export async function POST(request: Request) {
     }
 
     const values = parsed.data
-    const notification = createContactNotificationEmail(values)
-    const confirmation = createContactConfirmationEmail(values)
+    const notificationHtml = await render(
+      createElement(ContactNotificationEmail, { values })
+    )
+    const confirmationHtml = await render(
+      createElement(ContactConfirmationEmail, {
+        name: values.name,
+        service: values.service,
+      })
+    )
 
+    // Deliver the agency notification first so the inquiry is never lost.
     const notificationResult = await resend.emails.send({
-      from: `RujuIT Contact <${from}>`,
+      from,
       to: [to],
       replyTo: values.email,
       subject: `New RujuIT inquiry: ${values.service}`,
-      ...notification,
+      html: notificationHtml,
+      text: [
+        "New RujuIT website inquiry",
+        "",
+        `Name: ${values.name}`,
+        `Email: ${values.email}`,
+        `Service: ${values.service}`,
+        "",
+        "Project message:",
+        values.message,
+      ].join("\\n"),
     })
 
     if (notificationResult.error) {
-      console.error("Resend notification email error:", notificationResult.error)
+      console.error(
+        "Resend notification email error:",
+        notificationResult.error
+      )
       return NextResponse.json(
-        { error: "Unable to send your inquiry right now." },
+        { error: "Unable to deliver your inquiry to the RujuIT team." },
         { status: 502 }
       )
     }
 
+    // Send an automatic receipt to the visitor's submitted email address.
     const confirmationResult = await resend.emails.send({
-      from: `RujuIT <${from}>`,
+      from: `RujuIT <${fromAddress}>`,
       to: [values.email],
       subject: "We received your message | RujuIT",
-      ...confirmation,
+      html: confirmationHtml,
+      text: [
+        `Hi ${values.name},`,
+        "",
+        "Thank you for contacting RujuIT. Your inquiry has been received.",
+        `Selected service: ${values.service}`,
+        "",
+        "Our team will review your message and get back to you as soon as possible.",
+        "",
+        "Best regards,",
+        "RujuIT Team",
+      ].join("\\n"),
     })
 
     if (confirmationResult.error) {
-      // The agency notification was delivered; don't make the visitor resubmit
-      // and accidentally create duplicate inquiries because the auto-reply failed.
-      console.error("Resend confirmation email error:", confirmationResult.error)
+      console.error(
+        "Resend confirmation email error:",
+        confirmationResult.error
+      )
     }
 
-    return NextResponse.json(
-      { success: true, confirmationSent: !confirmationResult.error },
-      { status: 200 }
-    )
+    return NextResponse.json({
+      success: true,
+      confirmationSent: !confirmationResult.error,
+      message: confirmationResult.error
+        ? "Your inquiry reached RujuIT, but the confirmation email could not be delivered."
+        : "Your inquiry and confirmation email were delivered.",
+    })
   } catch (error) {
     console.error("Contact API error:", error)
     return NextResponse.json(

@@ -59,9 +59,14 @@ export function ContactForm({ dictionary }: ContactFormProps) {
     setFeedback(null)
 
     try {
-      await onSubmit(values)
+      const result = await onSubmit(values)
       form.reset()
-      setFeedback({ type: "success", message: dictionary.success })
+      setFeedback({
+        type: "success",
+        message: result.confirmationSent
+          ? dictionary.success
+          : dictionary.confirmationPending,
+      })
     } catch (error) {
       setFeedback({
         type: "error",
@@ -75,7 +80,7 @@ export function ContactForm({ dictionary }: ContactFormProps) {
     <form
       onSubmit={form.handleSubmit(handleSubmit)}
       noValidate
-      className="space-y-5 rounded-sm pb-3 p-1"
+      className="space-y-5 rounded-sm p-1 pb-3"
     >
       <FieldGroup>
         <div className="grid gap-5 sm:grid-cols-2">
@@ -87,7 +92,9 @@ export function ContactForm({ dictionary }: ContactFormProps) {
                 autoComplete="name"
                 placeholder={dictionary.name}
                 aria-invalid={Boolean(errors.name)}
-                aria-describedby={errors.name ? "contact-name-error" : undefined}
+                aria-describedby={
+                  errors.name ? "contact-name-error" : undefined
+                }
                 {...form.register("name")}
                 className="h-10 rounded-sm bg-background/70"
               />
@@ -137,9 +144,7 @@ export function ContactForm({ dictionary }: ContactFormProps) {
                     }
                     className="h-10! w-full rounded-sm! bg-background/70 px-3 text-sm"
                   >
-                    <SelectValue
-                      placeholder={dictionary.servicePlaceholder}
-                    />
+                    <SelectValue placeholder={dictionary.servicePlaceholder} />
                   </SelectTrigger>
                   <SelectContent>
                     {dictionary.options.map((option) => (

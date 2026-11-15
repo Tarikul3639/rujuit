@@ -195,7 +195,9 @@ export const homeDictionary = {
       "Not sure yet",
     ],
     success:
-      "Thank you. Your inquiry has been sent successfully. We will be in touch soon.",
+      "Thank you. Your inquiry and confirmation email have been sent successfully. We will be in touch soon.",
+    confirmationPending:
+      "Your inquiry reached RujuIT, but we could not send the confirmation email. Please check your inbox later or contact us directly.",
     deliveryError:
       "We could not send your inquiry. Please try again in a moment or contact us directly.",
     error: "Please complete the required fields.",
