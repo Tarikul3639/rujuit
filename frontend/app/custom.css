@@ -145,6 +145,58 @@ body {
   animation: spotlight 2s ease 0.75s 1 forwards;
 }
 
+/* Page-specific geometric artwork keeps each hero visually distinct. */
+.hero-art {
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: min(78vw, 820px) auto;
+  opacity: 0.72;
+  mask-image: linear-gradient(90deg, transparent 0%, black 28%, black 100%);
+}
+
+.hero-art--home {
+  background-image: url("/images/hero/home-architecture.svg");
+  background-position: right 28%;
+}
+
+.hero-art--about {
+  background-image: url("/images/hero/about-blueprint.svg");
+}
+
+.hero-art--contact {
+  background-image: url("/images/hero/contact-signal.svg");
+}
+
+.hero-art--policies {
+  background-image: url("/images/hero/policies-layers.svg");
+}
+
+.hero-art--services {
+  background-image: url("/images/hero/services-modules.svg");
+}
+
+.hero-art--service-detail {
+  background-image: url("/images/hero/service-detail-flow.svg");
+}
+
+.hero-art--work {
+  background-image: url("/images/hero/work-gallery.svg");
+}
+
+.hero-art--project {
+  background-image: url("/images/hero/project-detail-cube.svg");
+}
+
+@media (max-width: 640px) {
+  .hero-art {
+    background-size: 112vw auto;
+    background-position: right center;
+    opacity: 0.36;
+    mask-image: linear-gradient(90deg, transparent 0%, black 45%, black 100%);
+  }
+}
+
 /* Technical grid, clipped panels and restrained ambient motion. */
 .site-grid {
   background-image: linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),

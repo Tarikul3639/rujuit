@@ -37,7 +37,7 @@ export function WorkListing({
       >
         <SiteHeader locale={locale} dictionary={dictionary} />
         <section className="section-atmosphere relative overflow-hidden border-b border-border py-24 sm:py-32">
-          <div className="site-grid absolute inset-0 opacity-50" />
+          <div aria-hidden="true" className="hero-art hero-art--work absolute inset-0" />
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <motion.p
               {...reveal()}

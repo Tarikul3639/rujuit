@@ -175,6 +175,7 @@ export function HeroSection({ dictionary, locale }: HomePageProps) {
   return (
     <section className="relative isolate overflow-hidden border-b border-border">
       <div className="site-grid absolute inset-0 -z-20 mask-[radial-gradient(ellipse_at_30%_40%,black,transparent_75%)] opacity-40" />
+      <div aria-hidden="true" className="hero-art hero-art--home absolute inset-0 -z-10" />
       <div className="absolute -top-48 right-[-12%] -z-10 size-[min(80vw,760px)] rounded-full bg-primary/10 blur-[140px]" />
       <Spotlight className="-top-40 left-0 md:left-40" fill="#FACC15" />
 
